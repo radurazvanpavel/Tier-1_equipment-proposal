@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Medima Iași — uMR Omega 3T · uCT 780</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&family=Red+Hat+Text:wght@400;500;700&family=Red+Hat+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#37008D; --secondary:#7D5DE7; --accent:#2AD1BC;
+  --ink:#1D1D29; --line:#E7E3EE; --bg:#F7F5FC; --card:#FFFFFF;
+  --muted:#5D5876;
+  --grad:linear-gradient(120deg,#37008D 0%,#5A2BC0 55%,#7D5DE7 100%);
+  --grad-num:linear-gradient(120deg,#37008D,#7D5DE7 70%);
+  --shadow:0 10px 34px -14px rgba(55,0,141,.22);
+  --r:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{font-family:'Red Hat Text',system-ui,sans-serif;background:
+  radial-gradient(900px 420px at 85% -80px, rgba(42,209,188,.10), transparent 60%),
+  radial-gradient(1000px 520px at -120px 12%, rgba(125,93,231,.10), transparent 60%),
+  var(--bg);
+  color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+#app{max-width:1120px;margin:0 auto;padding:0 20px 70px}
+h1,h2,h3{font-family:'Red Hat Display',sans-serif;color:var(--primary)}
+
+/* ── topbar ── */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(247,245,252,.82);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(55,0,141,.08);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{font-family:'Red Hat Display';font-weight:900;color:var(--primary);font-size:18px;display:flex;align-items:center;gap:9px}
+.brand img{height:27px;width:auto;display:block}
+.brand small{font-weight:700;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--line);padding-left:9px}
+.lang-switch{display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:var(--shadow)}
+.lang-switch button{border:none;background:transparent;color:var(--primary);font-family:'Red Hat Text';font-weight:700;font-size:12px;padding:6px 13px;cursor:pointer;border-radius:999px;transition:.2s}
+.lang-switch button.active{background:var(--grad);color:#fff}
+@media(max-width:520px){.brand small{display:none}}
+
+/* ── tabs ── */
+.tabbar{position:sticky;top:53px;z-index:40;display:flex;gap:6px;overflow-x:auto;padding:12px 0 10px;
+  background:linear-gradient(to bottom,rgba(247,245,252,.96),rgba(247,245,252,.9));backdrop-filter:blur(8px);
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 17px;
+  font-family:'Red Hat Text';font-weight:700;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap;transition:.2s}
+.tab:hover{border-color:var(--secondary);color:var(--primary)}
+.tab.active{background:var(--grad);border-color:transparent;color:#fff;box-shadow:var(--shadow)}
+.tab .n{font-family:'Red Hat Mono';font-size:10px;opacity:.55;margin-right:6px}
+.tab.active .n{opacity:.8}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadein .3s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.tab-panel.active{animation:none}html{scroll-behavior:auto}}
+
+/* ── hero ── */
+.hero{margin-top:16px;background:var(--grad);border-radius:26px;padding:clamp(26px,4vw,46px);color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 60px -22px rgba(55,0,141,.5)}
+.hero::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(560px 260px at 88% 0%, rgba(42,209,188,.22), transparent 65%),
+  radial-gradient(420px 320px at 0% 110%, rgba(255,255,255,.08), transparent 60%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(20px,4vw,52px);align-items:center;position:relative;z-index:1}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hero h1{font-size:clamp(24px,4vw,40px);font-weight:900;line-height:1.1;color:#fff;letter-spacing:-.015em;margin-bottom:14px}
+.hero p.sub{font-size:15px;opacity:.9;max-width:52ch}
+.hero .meta{margin-top:22px;font-size:12.5px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .meta span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 13px}
+
+/* dual-system hero panel */
+.hero-panel{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:20px;
+  padding:24px 26px;backdrop-filter:blur(6px);display:grid;gap:20px;width:100%;max-width:340px;margin:0 auto;
+  box-shadow:0 18px 44px -20px rgba(0,0,0,.45)}
+.sys .lbl{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:5px}
+.sys b{display:block;font-family:'Red Hat Mono';font-weight:700;font-size:clamp(30px,4vw,40px);letter-spacing:-.02em;line-height:1}
+.sys.mr b{color:var(--accent)}
+.sys.ct b{color:#C9B8F8}
+.sys span{font-size:12.5px;opacity:.85;display:block;margin-top:5px;line-height:1.4}
+.sys + .sys{border-top:1px solid rgba(255,255,255,.16);padding-top:20px}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
+
+/* ── sections ── */
+section{padding:32px 0 6px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(21px,3vw,29px);font-weight:900;letter-spacing:-.01em}
+.sec-head.sub{margin-top:30px}
+.sec-head.sub h2{font-size:clamp(18px,2.5vw,24px)}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  background:linear-gradient(120deg,var(--accent),#4FDCC9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);margin-bottom:10px;font-size:15px}
+
+/* cards */
+.grid{display:grid;gap:14px;margin-top:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid rgba(55,0,141,.07);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-2px);box-shadow:0 16px 40px -14px rgba(55,0,141,.28)}
+.card h4{font-family:'Red Hat Display';font-size:15px;color:var(--primary);margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--muted)}
+.stat b{display:block;font-family:'Red Hat Mono';font-weight:700;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em;margin-bottom:5px;
+  background:var(--grad-num);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12.5px;color:var(--muted);line-height:1.4;display:block}
+.card.tealtop{border-top:3px solid var(--accent)}
+.card.violettop{border-top:3px solid var(--secondary)}
+
+/* feature list */
+ul.feat{list-style:none;margin-top:16px;display:grid;gap:10px}
+ul.feat li{background:#fff;border:1px solid rgba(55,0,141,.07);border-radius:14px;padding:12px 16px 12px 42px;position:relative;font-size:13.5px;box-shadow:0 6px 20px -14px rgba(55,0,141,.25)}
+ul.feat li::before{content:"";position:absolute;left:16px;top:17px;width:12px;height:12px;border-radius:4px;background:linear-gradient(135deg,var(--accent),var(--secondary))}
+ul.feat li b{color:var(--primary)}
+
+/* price cards */
+.price-card .tier{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.price-card .name{font-family:'Red Hat Display';font-weight:900;font-size:17px;color:var(--primary)}
+.price-card .amount{font-family:'Red Hat Mono';font-weight:700;font-size:clamp(21px,2.4vw,26px);margin:10px 0 2px;
+  background:var(--grad-num);-webkit-background-clip:text;background-clip:text;color:transparent}
+.price-card .amount small{font-size:12px;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+.price-card .usd{font-family:'Red Hat Mono';font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.price-card ul{list-style:none;font-size:12.5px;color:var(--muted);display:grid;gap:5px}
+.price-card ul li{padding-left:16px;position:relative}
+.price-card ul li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
+.price-card ul li.x::before{content:"–";color:#C4452F}
+.fine{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6}
+
+/* pillars — light */
+.pillar{border-top:3px solid var(--accent)}
+.pillar b.k{font-family:'Red Hat Display';font-weight:900;font-size:12px;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:8px;
+  background:var(--grad-num);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* recommendation panel */
+.reco{margin-top:26px;background:var(--grad);border-radius:26px;padding:clamp(24px,3.4vw,40px);color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 60px -22px rgba(55,0,141,.5)}
+.reco::after{content:"";position:absolute;inset:0;background:radial-gradient(560px 260px at 90% 0%, rgba(42,209,188,.24), transparent 65%);pointer-events:none}
+.reco>*{position:relative;z-index:1}
+.reco .tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;margin-bottom:14px}
+.reco .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.reco h2{color:#fff;font-size:clamp(20px,2.8vw,28px);margin-bottom:10px;letter-spacing:-.01em}
+.reco p{font-size:14.5px;opacity:.92;max-width:80ch}
+.reco-ask{margin-top:20px;display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.1);border:1px solid rgba(42,209,188,.55);border-radius:16px;padding:16px 18px;font-size:14px;backdrop-filter:blur(4px)}
+.reco-ask::before{content:"→";flex:0 0 30px;height:30px;border-radius:9px;background:var(--accent);color:var(--ink);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:15px}
+.reco-ask b{color:#fff}
+footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:11.5px;color:#8a86a0;line-height:1.6}
+
+/* ── password gate ── */
+#gate{position:fixed;inset:0;z-index:200;background:var(--grad);display:flex;align-items:center;justify-content:center;padding:20px}
+#gate::after{content:"";position:absolute;inset:0;background:radial-gradient(700px 340px at 80% 10%, rgba(42,209,188,.25), transparent 60%);pointer-events:none}
+.gate-card{background:#fff;border-radius:24px;padding:38px 32px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.4);position:relative;z-index:1}
+.gate-card .brand{font-size:26px;margin-bottom:8px;justify-content:center}
+.gate-card .brand img{height:40px}
+.gate-card h2{font-size:18px;margin-bottom:4px}
+.gate-card p{font-size:13px;color:var(--muted);margin-bottom:20px}
+.gate-card input{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font-family:'Red Hat Text';font-size:15px;text-align:center;letter-spacing:.08em;outline:none;transition:.2s}
+.gate-card input:focus{border-color:var(--secondary);box-shadow:0 0 0 4px rgba(125,93,231,.15)}
+.gate-card input.err{border-color:#C4452F;animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.gate-card button{margin-top:14px;width:100%;border:none;border-radius:14px;padding:13px;background:var(--grad);color:#fff;font-family:'Red Hat Display';font-weight:700;font-size:15px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.gate-card button:hover{filter:brightness(1.12)}
+.gate-err{display:none;color:#C4452F;font-size:12.5px;margin-top:10px;font-weight:700}
+body.locked{overflow:hidden}
+
+/* desktop presentation scale — subtle */
+@media(min-width:900px){body{zoom:1.05}}
+/* mobile */
+@media(max-width:820px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .g2{grid-template-columns:1fr}
+  .g3.solo{grid-template-columns:1fr}
+}
+@media(max-width:430px){.g3{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="locked">
+
+<div id="gate">
+  <div class="gate-card">
+    <div class="brand"><img id="logoGate" alt="Medima">Medima</div>
+    <h2>Acces restricționat</h2>
+    <p>Document intern · Internal document · Document interne</p>
+    <input type="password" id="gatePass" placeholder="Parolă / Password" autocomplete="off" onkeydown="if(event.key==='Enter')unlock()">
+    <button onclick="unlock()">Deschide · Open · Ouvrir</button>
+    <div class="gate-err" id="gateErr">Parolă incorectă · Wrong password · Mot de passe incorrect</div>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="brand"><img id="logoTop" alt="Medima">Medima<small id="brandTag">Clinica Iași</small></div>
+  <div class="lang-switch">
+    <button data-lang="ro" class="active" onclick="setLang('ro')">RO</button>
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+    <button data-lang="fr" onclick="setLang('fr')">FR</button>
+  </div>
+</div>
+
+<div id="app"></div>
+
+<script>
+const LOGO="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA9CAYAAAD8vnqQAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAABTrSURBVGhDtVoLdFTlnf+++55X3uFxgqWSIcaCtWpbxWpPfdVVKnaPsCunURvCgKjRra+1xxoEbdVWrYpIQ8Qsmj1q1/XFQwFd7bHrrrWrrkaJYUilCwISQgKZmXtn7ty7v/+9uZmbQGYmZPfLOeLM3Pt93+/7v37///+TVqxYwSY60l2N35DV4AJ+4uqJTza0Gbtn6c0ZS/9Eia7fNtH90fvSRCexuhpnKkpoa0mwoubQzqXTxdrWRROd0+yJ3VWiTV6ZNAZ0vevqS7T6p9+e6JwTAgpJzlDU0DZJDNT0HdnHQlp1Yyp+bUaI/m7p8W4MIO8IypUrj6QOMFnUMMo2WF2xvxHq2/79eOeckESteMN0RQ1vlaXA9KRxiHH8JY1eFtSqliR2LjGl2rXXj3dj6XjTrSG14j49c5jZdpYZ5iBT5UiYKdrmdFfsYqW+7T/HO6f3/HFJ1IrHarigAmSwNmn0OSBp2LYNsAdZSK2+LrlzaQZq/A/FbsyMN94UUip/Y2SOMMsynddoXvqsyZESReWb0/HGHyrR9j8XO6f/uXEDTXY2TAmE1K2qFKrzg/QmtW3LARtUK2+CZDOQ7G2FNmb2NF2nKRWPpM0EQGYciN4gsLoDtqRc4ZHX0l0NFyn1HR8VmnP07+MCmow3TNKCpQAZ/gaB8W/IP7ELtg+Srbo1EY+ZUrTt52NtDNoR05TS1RkzybJW+phzumAPA2xplaJWvA7JXgjJdo4HbNFAsaHKgKC8Dps5ZTRIzkUmCjIzs/rw2i7YQ2Szd6R2LMmIM9e2+DfW2XmyOEv7fpMkB1szpj4KpM0kUWMW7NSTsAt2gAWU0snMDm2FzZ4Pm+0qFmxRQK34/HImKK+pSslpCb132CZpEUGQnA0B5BeKHP56GmrmSZocim70s0Cg8q5kTywjzWi7x9vYrPJzynEuDyqCyoz0Eca54No5/nCYDGr8JYy+AoA19wAJKmepNIEtm2oztg2h7Xyhvn1HMWALAoVNlkBdN2lKyXeSo0FCkrAdlswcvEWwWbuZTW6GBM+i5zywdAi6McCCSuXKIbD3O46mpq1XiMcuy2QTG8mzkoelARAsk03tEm3rHFuwzoC2vEzSHQkWh6eUTTM5h2QbL1Dq23sKgc0LNNnZHAgEzY2woTkJ/cAI+xEIJDalZ3pbIKmHaSGo96WGcXhrUK36NoWaHFjTsbGAXHFfKg7JRtsecrQh2vYHeNvLZCmySZGCQUf9TX13xuqHd+3YDZe0O9Mdu0pRws+IAJsdIdl+OLzyr2OarVj3PMz1P/nA5gWqaOnnNaXq3NEgySY1tYxBcvdi08PqiMUOwWFdwjMMYCtPS8BheaGHQoaRGYQkyh9MxRvhoNofpY3h37czPU2XK0JkWzabPphODyJednR7m5bq2joQX2VVLnsKqgxbNobVmHxASK2s1S1zY3JP8znBmlVkN8ccYwI1dyz+TThYfdlg6qsRL5It4SQZQNwPkHeNnjUY7egFmbgkbfJt2MQpI8GmYXsMmlD1SLK7KaPUrXvCATtj3RvwpHNxFr1Qw89GzylF17Ub8ZgMzWplJoF1vTP90fxhbdI3Lf1AB768fFxAre7Y34J63ZrQKYTkhguygiT5kBRdO2bIEKId+6FOF6dt+82AXHpyCt7SlSx3NwmwAa18tRFvgmTXrR2S7Oa8qhdtW6t3N8maVvE4vT8CLHxCOFA97zDoozKjzfEBRx3W6C/sePMkJmVbswjctk0MxQve3AGZ0g8+JkbX3ppvU/Qb1HgvwH4vzez3ZDE408ymhl7xwHJ419JWgIXNrmsvNJ9zGHXrVuvxmKQp5Y/YGcvx9u6wWQreXeWBe7Px2Bas/WFBoCZLPhhWplQndFJZD6QNwl5FjOdZMdp6UzGbomdM05ypqlo4tyHvTQJrOLMrUslT6e7GjFTXTqpXcMBcHk12L66IBKtbEnqfA5IGSVhRysVMVl+zYvnyOUg/3R+GxggbRRA+S9VCVxGr8YMk7wrD/7D/q4HGytqCe3EegNs/W1XDr8NxRbLZhG++HFgTYCXOmayUPGO4Nvt8MbMrdU8uT8SXzIIPuCIx7N0pxsITa5Vn3nXV7qsYW/f0mEAF0b5XElWWAef0gIoI6FlTT3Hb/EnlnOfI5RUccCzfVdXIJi5IESLlnud1XyQ5eofNnfiINA9qHH421X1NVqtb/0LBBfCAGEguTunimYoUnkYc2RsIT/Tr3eqeht8bNR3DVG1YovauZWcpsnqBDubh57CqEmGDyX0rlbr27cVsACBPV8XIZkGQyyh25kDaYFEyVDWIg9QZSdNzUGS/AMsDctlzRk/jFcqM9lcKrcVrOvqz8abrBSH0Cs1DjMrRJICGVE9MpOwrAe6fvHmGgZpp80ZVK8ODyeE1FCnEkqm+HZMqT3iov9DKjro2fBOSfB2AKkeDREoHgKl0Oj1wB7Z0Mwj6NOKufrBwWqIqlPxLJt74Y8TXvF6YtgMn9moyvngLVPjiFGKqNxCPKWVsxueRQMnTcp6eZ0AC/iGJCtPNwXv6K1dS7pR3UN0IifgWQVSqSSv8kpShmhimwPh8Ibp2g90VeysrpbeBPlblDoSD+iUZDkSWpZIXM92N8+CgthZaF9rXggO8mEIfJRKeVDHP6ahMfAeVifedQ6H/2EyfCyYTcp2QO0gC+Lxr0oEjz/dH8y9n72meIiv2a+CkU8gh+EGS/TEuWClz4O+1aPsGmonXt30E6V+qqhVbkFSXU77pSZbSNWiSKsuRlxEqzkWo+K98qyvRtj9l4ov/DYzrfNfsqABgweahjZa+AB9zQHEOl3s6PgwUGwRJf7p/znNEQ/KObNLoCAWqvjYIPjwSpIasBJIyjywEyBf9k4DmvW90xS5V1MAWkPqSnNNCVQF2BtIeMK3088k9DacFazrGpHY0pyiIa7Hu+f75yQ+AMV6K7253JFr2Hy3Kgaq9Z9FJeoO4LE7HFuzM7wuBNONLmwDyAuLDfpBEwon46+ZAA5LkY85DNaB0vOFHKq/YjGTeyWBcYofcE5oRDkyutZIZKqHenG8fAVV5PaH394miUkH2SYO8OdT5ZDsem8ajbbulvuq9tai2TSYmlJOmxtKZwe33dJzwab6yr7qnOWhyY7kbjnJDFBScsoT07PBP4a3/Ob/qdbwD5+NmMGIwSHbqen3ERTgYhLfr7V2xx/j0ti/GmseoWTXA4rF38P7lqSGgRFICarlgZPpOoSxIgs+vd7yrzz4plgLouytWrBzBLkYvlEglfxxUq0/wv0sbpPlS+oEbAXJ9IY1w1AoZjNF9zXxVKdsocEnwmBQdPkqoSiL1VQzO5M4Cc70NCY4g9ZwJzGLCqUjpX5Msy6ofXftx7JW7Rpx/iAs9T+c9h1IHsajNcl37qkJv+39X6ta/ltmx+OFgoPrWpC+ZcLSFs/knd7a0bJ+90iO3R00NMB8gYXfU3vM3lg0ttexTncME6lo/F6UHSb/x4uf5NqruaQln2N4zaXJvkIvHu7bN2fLxgPSeFTl/AKWXxVD9Mjc7IVsDseDSzE+lvSdhT0elcMPrBNhf0qmkgeRdtYfKpUP2epIDFOhrLCdLcQcXBGIuWUy6L99mdfNAFJNWj7TtABWdP4bLP67aK5xGbza+ZFtAjiwAtXCWJyEgD+W63T87H1D9kNaHQkEvVL/GojwOI+sCPmEIKKuiItYwUJIlM4nTjmQPo1Bns9Y0VQw7VQNvkG0D6HGBzE1vvwevT/FveFABDuNr+Q7+jAVvpD7ZcO5haFWN99yQACscoILNJQo4OaSOxwNQO2/8xHFEKEaOHgLnVCw67gHn8aV78D7yT/sDqc036fbt2y3Ozk151UQfIKe8eHQpxQWNAOiIdswBJ3Zsx8An1qGDn9TcA/Q7fOdAXX6XZ9gMgXvEezk3Cxu1Ev5TII+FP5WVa1peoAI7QDbg3xJ5YNuyCxDGQttldRDfqIcA2rLyasrBg1ei8GqH/VGADsyyLQPocfqc7ycm5A1qFIlcUlnKJN0es4QoWdIXGSuVEQRR9ryc64H52Wpnc9iYvSpnvAWx5R7AIV/oVvq8gSiAz4IgDFcGjzVdxd5IJKuxcn8EEbgMq0zvdVXXtr8YMnbnfToRVNzhZPqn41z/e6w9fqZX/7Ve27dTEtT69JA7p1CACmF1gvUthE20jQOf82gaJF6Vgt/2p4pU601nEoNCwP44r9pqbDIOudz2WZQoyvC8Gae4DYmyHcQg/GcKzshYRjgF37061uSzEbyzO5duQX+03p/hE5nGSa5IxmMvBREuigXbsryF3331Vw9Scm6budhMiXrKMN4Vatqogj72sFi9pkW4jvaGN0SuAF7CKRhIgLjdYRA+a3P6k5zPKbRJblvrEV5u8ueCxFUDasVUnhl8Ltk597Lg7E25XeeZcPnVX7UiY/nuSDpJ2xCYIApPFdqLJdpnk6r6nZGzL2Y7WinxQOpzPSWYsDXQQTfQopJGOnwmSHsEhHnMFInKipl4bDMy/EtzHTYi433UH72AB098EyWapXz6mk/G2qgVb0ZT2Xo0oESu8FcJ6HlqNmHe7qryqS/2F0Jq8/PIlnNjyLZN9pELtKZjH5j/55IQnOXZWha2hspfVSLVdx5sbUz1pQlgBrdBdS9CliF7tI20g4BTzwbp3/vWzmXPwB2/wAPKJxDvES11KIgwHIWOz2M8u0iRI1XHlCQ5ScG6pVCFw9q17CTE72+ZPpUn2zbSgwNhM7Wd4DtxFF74DUnSZvltzRW7cA1+zgtUmN72Wbq76R8jwSkPE7ice6eccoAKYirajYtxeIuNVDKhcDZgsWBYEqUSynJoTdKA0YkFshZ2JPllqzxz3cZCwrQyZgOeF6ml6Q2ybaz5njG7w/H+LlCbvQgyfhMh9lgS9SwlQZ5rdy2bwevX5G3LoR7728EdsZNKglOWUpXBD5bMgVSSkgXMF0IoCxHzIY6ck+JIhhUOTGKY543DFYnmygIokVxoJtv3U7+QHEwCtIGz4aqGA7TiwNR3D1R9uQM2MdN7gXgibE9NWL234aFlhU5Vntl27eDOpWnYZjPxX7cFkQNANMRNAMaqs1E5VHHaHmgcbQh9KV8p1T5XsCiXMPYuQptymusj3EGJP1K9hMjKX/K+c4D2z1lpivHYOoSK+/0nQ91l2N4iK77sESG6Jm/a5ixQ23qjHl/aKUjqAyFtUhmVQ/zZzViHhYwD9lzC0tmUiQ3eJ9Y+0WLMKHS0jFGTWg1Iv3CrEt6wMRdq0Xrvizz66+FW4DDX5QG2Dr2MnyMDKaXAT4PuDyBUKLChxxGGLiq8NGQYbV1rdDW+Yas2ilJ8IYrJJaTK5OCItRDzIgtx7z2okKLI0ukjGZCElwH0fqR4HxSzDj2D1tqvQFCm+vu3yF3JCdm2zJzm9AiJ0gdqtaOQ9LimVN7p9kRzdRu06y8cjDfeiCLXY8VsYqjVfq29J/ZLw+CX4MguBNRZoOWVNrfACHgWzr8fVb5uRLW3mJjdyKc//jloStHD7G76IboI11MzOGciNgRTxuCUXkL78KNjAqUvpUDqwUTq4GJZCk32VwXJMSlS5CEUqT8AiD8WuxuwGeLK1P9cS2wa9d8yxnSJpcqyn+raYWJXxc7lfw6s62sBSXnGudrha22SjWOvpm2aRzWoR6Rp1M+AVG+Hra5H9Zu25sxPJFsRwxLaDS8YXQ0/QE226Gsv/g3ymlX93ufZx4MQ74BtlQZC8quKGJqUTLve3B02HFkZQtL+h47ZNR+9HvqPTyfjSxagH/qjXEGarqrR/YPSyYpavhX3FC5CC7+gczpOLGO+luycXxEITnpVlUpPpcsgfpDU2kykej8LB/W7j9XyO+YdBiGgLk4ZAx+iXTCVKuhkA7k7PqUnhFj5W9mu2IKJ3rgcz0FYnY21wVD4BWRW3/Jf7yFJutdzjDSyzwZ/q3BMG/V+EGpW7Yc9LhQ16U30TkQvJnpgEW+nihp/M9tz/c+EGavXjGfDx/Os2bN0HtoxbQA06agLXSDybl36wLXorh3V0vfWG/NWCvT8D0b8mkUBpWq9Ex58117odpgoqiqat09k/tJ8sS3od6CSflx2mw847kBMxS3SuxVBXkKEIzXCJt3Mhm7IDOr7Vxa6B5H/nlF0/dO4TBHAzcvfMQQE70ITqTLVTFNZirNll6dN+yKr54Y1XFSe4NMfLniLq5BUqY2J8LoIWc3PEEImEYUk2ujvnFNfBy0HhJKvfitFnyxYR84LlDaEk2pNxhuzmlS6VpRCnDpdfidAhByUKwhmcwtI/DLWc8MryEietbPmH+mCVSFQ3u9qZ0tADx46C0Tx75iQvUKWS6vRFqGrPo6P8MdKaJOrrvrBX4rRtl8Us0ZBoDQJiMKTerxpryqG1oPLVrrZhjfohgkIOtoIyFSCihxaCCK/MG0n99s9y/6Msv0Hlm10iUz4q21KA6ZENWNJQbc3bGd0FJeFOujg6clA7xkg/dNl0c1ocm0JP+HHhUi0PLCeiebRDQDZWgxIR2DFPqhE121KdDXMCdj2k6FA9fcpBSNa5yfuRBnd5BmZiqhMhvOYCxWb697+BAXkaWRKPCtwS+QoXsrYNPFc8gGU7FMrxI3fo4d7/yGolKMNeXh7WteXoOVYNHEZF1B6OFjfsWP58uU/WH5N7+0CF+5EDhihi0y5Uoy3QdsB5nFm+tYtqXKqMIpeJmM6Lb68DTvnPSTwOIAkWqX9q/TdA3cFz83fGD6W8IqWqPeye1Fp9QNWvPFfU7Z1J0j5T3DxQiZ78gM7SiZD9wvyw8q9RRUCKqU4ks4kN9qWfg9s/k/BE4vVwZHPjRuo97oQbY/j/xvtXc0P6+nDlK/OhxesJgmR+lFZhTKVYgc5OFJP0E/nsrNhDAyizLnBEs01wow17xzd/Ch2Zve54wbqLcOnr/oEm7jOjt/eglTrEqCbB5v8HtK9qbhO4zxGSTx1MMgWEZEJEmwTd1QACKrsPEOFLZRKD+GQ3rO5vYHZmU289oldefsi48A6YaDDgKO/pjiAjII9Y+BCM9cyMy1roD6LRjMKVzPRGpiGA0FuyiNUO0O7YMDO2vtQMt2J+LudZ9XPDF3aEZy96vBEpfd/YqPFHCI2S66TKusfeydZjGRc+f//jP8F2n7zaYtcNS0AAAAASUVORK5CYII=";
+document.getElementById('logoGate').src = LOGO;
+document.getElementById('logoTop').src = LOGO;
+
+const T = {
+/* ─────────── RO ─────────── */
+ro:{
+  brandTag:'Clinica Iași · Propunere echipamente',
+  tabs:['Sinteză','uMR Omega','uCT 780','Investiție','Concluzii'],
+  heroEyebrow:'Medima Health · Iași · Iulie 2026',
+  heroH:'Propunere de echipamente imagistice pentru viitoarea clinică din Iași',
+  heroSub:'uMR Omega — RM 3.0T ultra-wide bore de 75 cm — și uCT 780 — CT 160 slice — configurațiile propuse pe baza ofertelor oficiale United Imaging Healthcare, primite prin Fusion Med la 13 iulie 2026.',
+  heroMeta:['FOV 60×60×50 cm — cel mai mare din industrie','Masă de 310 kg — imagistică bariatrică','Accelerare AI până la 36x pe RM','Doză CT redusă cu până la 80% (DELTA)'],
+  sysA:{lbl:'uMR Omega · RM 3.0T', big:'75 cm', sub:'tunel ultra-wide — primul de 75 cm din lume la 3T'},
+  sysB:{lbl:'uCT 780 · CT', big:'160', sub:'slice/rotație · 0,3 s/360° · spectral dual-energy'},
+  solA_h:'uMR Omega — RM 3.0T',
+  solA:'Primul sistem RM ultra-wide bore de 75 cm din lume, cu cel mai mare câmp de vizualizare din industrie (60×60×50 cm) și accelerare AI (ACS, DeepRecon). Configurație all-in: 72 canale, 11 bobine, sistem imersiv anti-anxietate inclus.',
+  solB_h:'uCT 780 — CT 160 slice',
+  solB:'CT premium cu detector Z de 0,5 mm, rotație 0,3 s și imagistică spectrală dual-energy. Cardiologie completă, perfuzie și aplicații AI de poziționare și reducere a dozei. Punctaj CAS maxim: 209 puncte.',
+  mrTag:'uMR Omega · 3.0T', mrTitle:'Parametrii care contează clinic',
+  mrStats:[
+    ['75 cm','diametrul tunelului — primul ultra-wide bore de 75 cm din lume la 3T'],
+    ['60×60×50','cm — cel mai mare câmp de vizualizare (FOV) din industrie'],
+    ['310 kg','capacitatea mesei; coborâre la 52 cm pentru mobilitate redusă'],
+    ['0,029 ppm','omogenitate @ 30 cm DSV — calitate constantă a imaginii'],
+    ['72 + 11','canale RF independente și 11 bobine — acoperire whole-body'],
+    ['45 / 200','mT/m · T/m/s — gradienți pentru secvențe rapide și aplicații avansate']
+  ],
+  mrFeats:[
+    '<b>ACS (AI-assisted Compressed Sensing)</b> — accelerare de până la 36x față de achiziția neaccelerată; examinări semnificativ mai scurte, fără compromis de calitate.',
+    '<b>DeepRecon · EasySense · QScan · MARS+</b> — reconstrucție deep-learning, senzor respirator fără contact, scanare silențioasă, protocoale pentru implanturi metalice.',
+    '<b>Zero helium boil-off</b> — costuri de operare predictibile.'
+  ],
+  adrTitle:'Adresabilitate: pacienții pe care alții nu îi pot scana',
+  adr:[
+    ['Pacienți anxioși și claustrofobi','Până la 12% din scanările RM se anulează din cauza anxietății. Tunelul de 75 cm, iluminarea „cer înstelat" și sistemul imersiv (proiector în gantry, monitor MR-compatibil, audio) — inclus în ofertă — reduc direct rata de anulare.'],
+    ['Pacienți bariatrici','Masă de 310 kg și spațiu real în tunel — segment practic neacoperit de sistemele convenționale de 60–70 cm.'],
+    ['Pediatrie și vârstnici','Pachete dedicate nou-născuți & pediatrie, examinări off-center confortabile (umăr, șold, genunchi în poziție anatomică), protocoale rapide.'],
+    ['Cazuri complexe și extindere','MARS+ pentru implanturi metalice, whole-body cu bobinele incluse, planificare de radioterapie și potențial RM intraoperator — direcții de creștere pentru un centru universitar.']
+  ],
+  ctTag:'uCT 780 · 160 slice', ctTitle:'CT premium, cu punctaj CAS maxim',
+  ctStats:[
+    ['160','slice-uri/rotație, detector Z cu element de 0,5 mm (80 rânduri)'],
+    ['0,3 s','rotație/360° — rezoluție temporală pentru cardiac'],
+    ['100 kW','generator; moduri 70–140 kV, inclusiv doză redusă'],
+    ['1024²','matrice de reconstrucție de înaltă rezoluție'],
+    ['−80%','doză cu algoritmul deep-learning DELTA, la aceeași detectabilitate'],
+    ['209 p','punctaj CAS (Casa de Asigurări de Sănătate) — maximul posibil conform fișei tehnice']
+  ],
+  ctFeats:[
+    '<b>Cardiologie completă:</b> scor de calciu, angio-CT coronarian prospectiv/retrospectiv, CardioXphase, Dynamic Pitch — inclusiv ritmuri neregulate.',
+    '<b>Imagistică spectrală dual-energy</b> (80/140 kVp) și Shuttle Perfusion — analiza compoziției țesuturilor și perfuzie cerebrală/corporală.',
+    '<b>uAI Vision:</b> cameră 3D și poziționare automată AI — examinări standardizate, doză optimizată, flux mai rapid.'
+  ],
+  invTag:'Investiție', invTitle:'Valorile ofertelor (fără TVA)',
+  inv:[
+    {tier:'RM 3.0T · all-in', name:'uMR Omega', eur:'1.425.000 €', usd:'1.625.000 $ · preț contractual în USD',
+     items:['Stație de procesare completă','Tablou electric, cabină RF, chiller','Injector contrast RMN','Sistem imersiv anti-anxietate','Opțional: bobină sugari 23.000 € · stimuli fMRI 25.000 €'], cls:'tealtop'},
+    {tier:'CT 160 slice · configurație completă', name:'uCT 780 Elite', eur:'415.000 €', usd:'472.530 $ · preț contractual în USD',
+     items:['0,3 s/rot · generator 100 kW','Pachet cardiac + spectral dual-energy','Shuttle Perfusion · uAI Vision','Stație procesare, PDB, injector','2 seturi radioprotecție'], cls:'violettop'},
+    {tier:'CT 160 slice · configurație de bază', name:'uCT 780 Evolve', eur:'338.000 €', usd:'388.700 $ · preț contractual în USD',
+     items:['0,35 s/rot · generator 80 kW','x|Pachet cardiac: doar ca upgrade (~38.000 €)','x|Spectral: doar ca upgrade (~23.000 €)','x|Shuttle Perfusion & uAI Vision: indisponibile ulterior'], cls:''}
+  ],
+  invFine:'Ambele sisteme: garanție 2 ani de la punerea în funcțiune · livrare și instalare incluse · instruire la beneficiar (min. 12 zile RM / 8 zile CT) · upgrade-uri software gratuite în garanție. Valabilitatea ofertelor: 90 de zile de la 13.07.2026.',
+  concTag:'Concluzii', concTitle:'De ce această configurație pentru Iași',
+  concLead:'Iașiul este primul oraș de Tier 1 în care Medima intră cu o clinică nouă. Configurația de echipamente decide, de la început, poziționarea pe piață.',
+  conc:[
+    '<b>Piață universitară, foarte competitivă.</b> Iașiul concentrează o densitate ridicată de echipamente performante, publice și private. Simpla prezență nu penetrează piața — este nevoie de capabilități pe care ceilalți nu le au.',
+    '<b>Diferențiatori cu adresabilitate mare.</b> Ținta este să putem scana pacienții pe care sistemele convenționale îi refuză: bariatrici, claustrofobi, pediatrici, purtători de implanturi.',
+    '<b>Plajă maximă de investigații.</b> De la rutină la cardio-CT, spectral, neuro avansat și whole-body — cu decontare CAS la punctaj maxim pe CT.'
+  ],
+  imp:[
+    ['Diferențiere reală','Singura combinație 3T cu tunel de 75 cm din piață — un avantaj concret, greu de replicat de competiție: câmp înalt și accesibilitate maximă în același sistem.'],
+    ['Adresabilitate maximă','Pacienți refuzați în altă parte — bariatrici, claustrofobi, pediatrici, purtători de implanturi — devin adresabili. Fiecare categorie recuperată înseamnă volum și recomandări din partea medicilor trimițători.'],
+    ['Plajă completă de investigații','De la rutină la cardio-CT, spectral, neuro avansat și whole-body — cu decontare CAS la punctaj maxim pe CT și examinări scurtate prin accelerarea AI pe RM.']
+  ],
+  recoTag:'Recomandarea noastră',
+  recoTitle:'uMR Omega (all-in) + uCT 780 Elite pentru clinica din Iași',
+  recoBody:'Recomandăm achiziția celor două sisteme în configurațiile ofertate: uMR Omega all-in și uCT 780 în varianta Elite — pachetele cardiac și spectral din configurația Elite susțin direct diferențierea și punctajul CAS maxim, iar sistemul imersiv și bobinele whole-body de pe RM adresează exact segmentele de pacienți pe care le vizăm în Iași.',
+  recoAsk:'<b>Pasul următor:</b> validarea acestei configurații, astfel încât comanda să poată fi plasată în interiorul valabilității ofertelor — 90 de zile de la 13.07.2026.',
+  footer:'Document intern Medima Health S.A.'
+},
+/* ─────────── EN ─────────── */
+en:{
+  brandTag:'Iași Clinic · Equipment proposal',
+  tabs:['Overview','uMR Omega','uCT 780','Investment','Conclusions'],
+  heroEyebrow:'Medima Health · Iași · July 2026',
+  heroH:'Imaging equipment proposal for the future Iași clinic',
+  heroSub:'uMR Omega — a 75 cm ultra-wide-bore 3.0T MRI — and uCT 780 — a 160-slice CT — the configurations proposed on the basis of the official United Imaging Healthcare offers received via Fusion Med on 13 July 2026.',
+  heroMeta:['60×60×50 cm FOV — the industry\u2019s largest','310 kg table — bariatric imaging','AI acceleration up to 36x on the MRI','CT dose reduced by up to 80% (DELTA)'],
+  sysA:{lbl:'uMR Omega · 3.0T MRI', big:'75 cm', sub:'ultra-wide bore — the world\u2019s first 75 cm at 3T'},
+  sysB:{lbl:'uCT 780 · CT', big:'160', sub:'slices/rotation · 0.3 s/360° · dual-energy spectral'},
+  solA_h:'uMR Omega — 3.0T MRI',
+  solA:'The world\u2019s first 75 cm ultra-wide-bore MRI, with the industry\u2019s largest field of view (60×60×50 cm) and AI acceleration (ACS, DeepRecon). All-in configuration: 72 channels, 11 coils, immersive anti-anxiety system included.',
+  solB_h:'uCT 780 — 160-slice CT',
+  solB:'Premium CT with a 0.5 mm Z-Detector, 0.3 s rotation and dual-energy spectral imaging. Full cardiac workflow, perfusion, plus AI positioning and dose-reduction applications. Maximum CAS score (CAS — the Romanian Health Insurance House reimbursement grid): 209 points.',
+  mrTag:'uMR Omega · 3.0T', mrTitle:'The parameters that matter clinically',
+  mrStats:[
+    ['75 cm','bore diameter — the world\u2019s first 75 cm ultra-wide bore at 3T'],
+    ['60×60×50','cm — the industry\u2019s largest field of view (FOV)'],
+    ['310 kg','table capacity; lowers to 52 cm for reduced mobility'],
+    ['0.029 ppm','homogeneity @ 30 cm DSV — consistent image quality'],
+    ['72 + 11','independent RF channels and 11 coils — whole-body coverage'],
+    ['45 / 200','mT/m · T/m/s — gradients for fast sequences and advanced applications']
+  ],
+  mrFeats:[
+    '<b>ACS (AI-assisted Compressed Sensing)</b> — up to 36x acceleration versus non-accelerated acquisition; significantly shorter exams with no quality trade-off.',
+    '<b>DeepRecon · EasySense · QScan · MARS+</b> — deep-learning reconstruction, contactless respiratory sensing, quiet scanning, metal-implant protocols.',
+    '<b>Zero helium boil-off</b> — predictable operating costs.'
+  ],
+  adrTitle:'Addressability: the patients others cannot scan',
+  adr:[
+    ['Anxious and claustrophobic patients','Up to 12% of MRI scans are cancelled due to anxiety. The 75 cm bore, the "starry sky" in-bore lighting and the immersive system (in-gantry projector, MR-compatible display, audio) — included in the offer — directly reduce cancellation rates.'],
+    ['Bariatric patients','A 310 kg table and genuine in-bore space — a segment practically unserved by conventional 60–70 cm systems.'],
+    ['Paediatrics and the elderly','Dedicated neonatal & paediatric packages, comfortable off-center exams (shoulder, hip, knee in anatomical position), fast protocols.'],
+    ['Complex cases and future growth','MARS+ for metal implants, whole-body with the included coils, radiotherapy planning and potential intraoperative MRI — growth directions for a university-city centre.']
+  ],
+  ctTag:'uCT 780 · 160-slice', ctTitle:'A premium CT, with maximum CAS scoring',
+  ctStats:[
+    ['160','slices/rotation, Z-Detector with 0.5 mm elements (80 rows)'],
+    ['0.3 s','rotation/360° — temporal resolution for cardiac work'],
+    ['100 kW','generator; 70–140 kV modes, including low dose'],
+    ['1024²','high-resolution reconstruction matrix'],
+    ['−80%','dose with the DELTA deep-learning algorithm, at equal detectability'],
+    ['209 p','CAS score (Casa de Asigurări de Sănătate — the Romanian Health Insurance House) — the maximum possible per the reimbursement grid']
+  ],
+  ctFeats:[
+    '<b>Full cardiology:</b> calcium scoring, prospective/retrospective coronary CTA, CardioXphase, Dynamic Pitch — including irregular rhythms.',
+    '<b>Dual-energy spectral imaging</b> (80/140 kVp) and Shuttle Perfusion — tissue composition analysis and brain/body perfusion.',
+    '<b>uAI Vision:</b> 3D camera and automatic AI positioning — standardised exams, optimised dose, faster workflow.'
+  ],
+  invTag:'Investment', invTitle:'Offer values (VAT excluded)',
+  inv:[
+    {tier:'3.0T MRI · all-in', name:'uMR Omega', eur:'€1,425,000', usd:'$1,625,000 · contractual price in USD',
+     items:['Full processing workstation','Electrical panel, RF cabin, chiller','MRI contrast injector','Immersive anti-anxiety system','Optional: infant coil €23,000 · fMRI stimuli €25,000'], cls:'tealtop'},
+    {tier:'160-slice CT · full configuration', name:'uCT 780 Elite', eur:'€415,000', usd:'$472,530 · contractual price in USD',
+     items:['0.3 s/rot · 100 kW generator','Cardiac + dual-energy spectral packages','Shuttle Perfusion · uAI Vision','Processing workstation, PDB, injector','2 radioprotection sets'], cls:'violettop'},
+    {tier:'160-slice CT · base configuration', name:'uCT 780 Evolve', eur:'€338,000', usd:'$388,700 · contractual price in USD',
+     items:['0.35 s/rot · 80 kW generator','x|Cardiac package: upgrade only (~€38,000)','x|Spectral: upgrade only (~€23,000)','x|Shuttle Perfusion & uAI Vision: cannot be added later'], cls:''}
+  ],
+  invFine:'Both systems: 2-year warranty from commissioning · delivery and installation included · on-site training (min. 12 days MRI / 8 days CT) · free software upgrades during warranty. Offer validity: 90 days from 13.07.2026.',
+  concTag:'Conclusions', concTitle:'Why this configuration for Iași',
+  concLead:'Iași is the first Tier 1 city where Medima opens a new clinic. The equipment configuration defines the market positioning from day one.',
+  conc:[
+    '<b>A university market, highly competitive.</b> Iași concentrates a high density of high-performance equipment, public and private. Mere presence does not penetrate this market — it takes capabilities the others don\u2019t have.',
+    '<b>Differentiators with broad addressability.</b> The target is to scan the patients conventional systems turn away: bariatric, claustrophobic, paediatric, implant carriers.',
+    '<b>The widest possible range of investigations.</b> From routine studies to cardiac CT, spectral, advanced neuro and whole-body — with maximum CAS (Health Insurance House) reimbursement scoring on the CT.'
+  ],
+  imp:[
+    ['Real differentiation','The only 3T / 75 cm bore combination on the market — a concrete advantage that is hard for competitors to replicate: high field and maximum accessibility in one system.'],
+    ['Maximum addressability','Patients turned away elsewhere — bariatric, claustrophobic, paediatric, implant carriers — become addressable. Every recovered category means volume and referrals from prescribing physicians.'],
+    ['Full range of investigations','From routine studies to cardiac CT, spectral, advanced neuro and whole-body — with maximum CAS scoring on the CT and shorter exams through AI acceleration on the MRI.']
+  ],
+  recoTag:'Our recommendation',
+  recoTitle:'uMR Omega (all-in) + uCT 780 Elite for the Iași clinic',
+  recoBody:'We recommend acquiring the two systems in the quoted configurations: the uMR Omega all-in and the uCT 780 in the Elite variant — the cardiac and spectral packages in the Elite configuration directly support the differentiation and the maximum CAS score, while the immersive system and whole-body coils on the MRI address exactly the patient segments we are targeting in Iași.',
+  recoAsk:'<b>Next step:</b> validate this configuration so the order can be placed within the offer validity — 90 days from 13.07.2026.',
+  footer:'Medima Health S.A. — internal document'
+},
+/* ─────────── FR ─────────── */
+fr:{
+  brandTag:'Clinique de Iași · Proposition d\u2019équipements',
+  tabs:['Synthèse','uMR Omega','uCT 780','Investissement','Conclusions'],
+  heroEyebrow:'Medima Health · Iași · Juillet 2026',
+  heroH:'Proposition d\u2019équipements d\u2019imagerie pour la future clinique de Iași',
+  heroSub:'uMR Omega — IRM 3,0 T à tunnel ultra-large de 75 cm — et uCT 780 — scanner 160 coupes — les configurations proposées sur la base des offres officielles United Imaging Healthcare, reçues via Fusion Med le 13 juillet 2026.',
+  heroMeta:['FOV 60×60×50 cm — le plus grand du secteur','Table de 310 kg — imagerie bariatrique','Accélération IA jusqu\u2019à 36x sur l\u2019IRM','Dose scanner réduite jusqu\u2019à 80 % (DELTA)'],
+  sysA:{lbl:'uMR Omega · IRM 3,0 T', big:'75 cm', sub:'tunnel ultra-large — le premier de 75 cm au monde en 3T'},
+  sysB:{lbl:'uCT 780 · scanner', big:'160', sub:'coupes/rotation · 0,3 s/360° · spectral double énergie'},
+  solA_h:'uMR Omega — IRM 3,0 T',
+  solA:'La première IRM au monde à tunnel ultra-large de 75 cm, avec le plus grand champ de vue du secteur (60×60×50 cm) et l\u2019accélération par IA (ACS, DeepRecon). Configuration all-in : 72 canaux, 11 antennes, système immersif anti-anxiété inclus.',
+  solB_h:'uCT 780 — scanner 160 coupes',
+  solB:'Scanner premium avec détecteur Z de 0,5 mm, rotation de 0,3 s et imagerie spectrale double énergie. Flux cardiaque complet, perfusion, applications IA de positionnement et de réduction de dose. Score CAS maximal (CAS — Casa de Asigurări de Sănătate, la caisse roumaine d\u2019assurance santé) : 209 points.',
+  mrTag:'uMR Omega · 3,0 T', mrTitle:'Les paramètres qui comptent en clinique',
+  mrStats:[
+    ['75 cm','diamètre du tunnel — première IRM 3T ultra-large de 75 cm au monde'],
+    ['60×60×50','cm — le plus grand champ de vue (FOV) du secteur'],
+    ['310 kg','capacité de la table ; descend à 52 cm pour mobilité réduite'],
+    ['0,029 ppm','homogénéité @ 30 cm DSV — qualité d\u2019image constante'],
+    ['72 + 11','canaux RF indépendants et 11 antennes — couverture corps entier'],
+    ['45 / 200','mT/m · T/m/s — gradients pour séquences rapides et applications avancées']
+  ],
+  mrFeats:[
+    '<b>ACS (compressed sensing assisté par IA)</b> — accélération jusqu\u2019à 36x par rapport à l\u2019acquisition non accélérée ; examens nettement plus courts, sans compromis de qualité.',
+    '<b>DeepRecon · EasySense · QScan · MARS+</b> — reconstruction deep-learning, capteur respiratoire sans contact, examen silencieux, protocoles pour implants métalliques.',
+    '<b>Zéro évaporation d\u2019hélium</b> — coûts d\u2019exploitation prévisibles.'
+  ],
+  adrTitle:'Adressabilité : les patients que les autres ne peuvent pas examiner',
+  adr:[
+    ['Patients anxieux et claustrophobes','Jusqu\u2019à 12 % des IRM sont annulées pour cause d\u2019anxiété. Le tunnel de 75 cm, l\u2019éclairage « ciel étoilé » et le système immersif (projecteur dans le gantry, écran compatible IRM, audio) — inclus dans l\u2019offre — réduisent directement le taux d\u2019annulation.'],
+    ['Patients bariatriques','Table de 310 kg et espace réel dans le tunnel — un segment pratiquement non couvert par les systèmes conventionnels de 60–70 cm.'],
+    ['Pédiatrie et personnes âgées','Modules dédiés nouveau-nés & pédiatrie, examens décentrés confortables (épaule, hanche, genou en position anatomique), protocoles rapides.'],
+    ['Cas complexes et développement','MARS+ pour implants métalliques, corps entier avec les antennes incluses, planification de radiothérapie et potentiel d\u2019IRM peropératoire — axes de croissance pour un centre en ville universitaire.']
+  ],
+  ctTag:'uCT 780 · 160 coupes', ctTitle:'Un scanner premium, au score CAS maximal',
+  ctStats:[
+    ['160','coupes/rotation, détecteur Z à éléments de 0,5 mm (80 rangées)'],
+    ['0,3 s','rotation/360° — résolution temporelle pour le cardiaque'],
+    ['100 kW','générateur ; modes 70–140 kV, y compris basse dose'],
+    ['1024²','matrice de reconstruction haute résolution'],
+    ['−80 %','de dose avec l\u2019algorithme deep-learning DELTA, à détectabilité égale'],
+    ['209 p','score CAS (caisse roumaine d\u2019assurance santé) — le maximum possible selon la grille de remboursement']
+  ],
+  ctFeats:[
+    '<b>Cardiologie complète :</b> score calcique, coroscanner prospectif/rétrospectif, CardioXphase, Dynamic Pitch — y compris rythmes irréguliers.',
+    '<b>Imagerie spectrale double énergie</b> (80/140 kVp) et Shuttle Perfusion — analyse de composition des tissus et perfusion cérébrale/corporelle.',
+    '<b>uAI Vision :</b> caméra 3D et positionnement automatique par IA — examens standardisés, dose optimisée, flux plus rapide.'
+  ],
+  invTag:'Investissement', invTitle:'Valeurs des offres (hors TVA)',
+  inv:[
+    {tier:'IRM 3,0 T · all-in', name:'uMR Omega', eur:'1 425 000 €', usd:'1 625 000 $ · prix contractuel en USD',
+     items:['Station de traitement complète','Tableau électrique, cabine RF, chiller','Injecteur de contraste IRM','Système immersif anti-anxiété','En option : antenne nourrissons 23 000 € · stimuli IRMf 25 000 €'], cls:'tealtop'},
+    {tier:'Scanner 160 coupes · configuration complète', name:'uCT 780 Elite', eur:'415 000 €', usd:'472 530 $ · prix contractuel en USD',
+     items:['0,3 s/rot · générateur 100 kW','Modules cardiaque + spectral double énergie','Shuttle Perfusion · uAI Vision','Station de traitement, PDB, injecteur','2 kits de radioprotection'], cls:'violettop'},
+    {tier:'Scanner 160 coupes · configuration de base', name:'uCT 780 Evolve', eur:'338 000 €', usd:'388 700 $ · prix contractuel en USD',
+     items:['0,35 s/rot · générateur 80 kW','x|Module cardiaque : uniquement en mise à niveau (~38 000 €)','x|Spectral : uniquement en mise à niveau (~23 000 €)','x|Shuttle Perfusion & uAI Vision : non ajoutables ultérieurement'], cls:''}
+  ],
+  invFine:'Les deux systèmes : garantie de 2 ans à compter de la mise en service · livraison et installation incluses · formation sur site (min. 12 jours IRM / 8 jours CT) · mises à jour logicielles gratuites pendant la garantie. Validité des offres : 90 jours à compter du 13.07.2026.',
+  concTag:'Conclusions', concTitle:'Pourquoi cette configuration pour Iași',
+  concLead:'Iași est la première ville de premier rang où Medima ouvre une nouvelle clinique. La configuration des équipements définit d\u2019emblée le positionnement sur le marché.',
+  conc:[
+    '<b>Un marché universitaire très concurrentiel.</b> Iași concentre une forte densité d\u2019équipements performants, publics et privés. La simple présence ne suffit pas — il faut des capacités que les autres n\u2019ont pas.',
+    '<b>Des différenciateurs à forte adressabilité.</b> L\u2019objectif est de pouvoir examiner les patients que les systèmes conventionnels refusent : bariatriques, claustrophobes, pédiatriques, porteurs d\u2019implants.',
+    '<b>La gamme d\u2019examens la plus large possible.</b> De la routine au scanner cardiaque, au spectral, au neuro avancé et au corps entier — avec un score de remboursement CAS maximal sur le scanner.'
+  ],
+  imp:[
+    ['Différenciation réelle','La seule combinaison 3T / tunnel de 75 cm du marché — un avantage concret, difficile à répliquer par la concurrence : haut champ et accessibilité maximale dans un même système.'],
+    ['Adressabilité maximale','Les patients refusés ailleurs — bariatriques, claustrophobes, pédiatriques, porteurs d\u2019implants — deviennent adressables. Chaque catégorie récupérée signifie du volume et des adressages de la part des prescripteurs.'],
+    ['Gamme complète d\u2019examens','De la routine au scanner cardiaque, au spectral, au neuro avancé et au corps entier — avec un score CAS maximal sur le scanner et des examens raccourcis grâce à l\u2019accélération IA sur l\u2019IRM.']
+  ],
+  recoTag:'Notre recommandation',
+  recoTitle:'uMR Omega (all-in) + uCT 780 Elite pour la clinique de Iași',
+  recoBody:'Nous recommandons l\u2019acquisition des deux systèmes dans les configurations proposées : l\u2019uMR Omega all-in et le uCT 780 en variante Elite — les modules cardiaque et spectral de la configuration Elite soutiennent directement la différenciation et le score CAS maximal, tandis que le système immersif et les antennes corps entier de l\u2019IRM adressent exactement les segments de patients que nous visons à Iași.',
+  recoAsk:'<b>Prochaine étape :</b> valider cette configuration afin que la commande puisse être passée dans le délai de validité des offres — 90 jours à compter du 13.07.2026.',
+  footer:'Document interne Medima Health S.A.'
+}
+};
+
+let currentLang='ro', currentTab=0;
+
+function statGrid(arr){
+  return `<div class="grid g3">${arr.map(s=>`<div class="card stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>`;
+}
+function featList(arr){
+  return `<ul class="feat">${arr.map(f=>`<li>${f}</li>`).join('')}</ul>`;
+}
+
+function render(){
+  const t=T[currentLang];
+  document.getElementById('brandTag').textContent=t.brandTag;
+
+  const panels=[
+  /* 01 · overview */
+  `<div class="hero"><div class="hero-grid">
+     <div>
+       <span class="eyebrow">${t.heroEyebrow}</span>
+       <h1>${t.heroH}</h1>
+       <p class="sub">${t.heroSub}</p>
+       <div class="meta">${t.heroMeta.map(m=>`<span>${m}</span>`).join('')}</div>
+     </div>
+     <div class="hero-panel">
+       <div class="sys mr"><div class="lbl">${t.sysA.lbl}</div><b>${t.sysA.big}</b><span>${t.sysA.sub}</span></div>
+       <div class="sys ct"><div class="lbl">${t.sysB.lbl}</div><b>${t.sysB.big}</b><span>${t.sysB.sub}</span></div>
+     </div>
+   </div></div>
+   <section><div class="grid g2">
+     <div class="card tealtop"><h4>${t.solA_h}</h4><p>${t.solA}</p></div>
+     <div class="card violettop"><h4>${t.solB_h}</h4><p>${t.solB}</p></div>
+   </div></section>`,
+
+  /* 02 · uMR Omega (specs + addressability) */
+  `<section>
+     <div class="sec-head"><span class="sec-tag">${t.mrTag}</span><h2>${t.mrTitle}</h2></div>
+     ${statGrid(t.mrStats)}
+     ${featList(t.mrFeats)}
+     <div class="sec-head sub"><span class="sec-tag">${t.mrTag}</span><h2>${t.adrTitle}</h2></div>
+     <div class="grid g2">${t.adr.map(a=>`<div class="card"><h4>${a[0]}</h4><p>${a[1]}</p></div>`).join('')}</div>
+   </section>`,
+
+  /* 03 · uCT 780 */
+  `<section>
+     <div class="sec-head"><span class="sec-tag">${t.ctTag}</span><h2>${t.ctTitle}</h2></div>
+     ${statGrid(t.ctStats)}
+     ${featList(t.ctFeats)}
+   </section>`,
+
+  /* 04 · investment */
+  `<section>
+     <div class="sec-head"><span class="sec-tag">${t.invTag}</span><h2>${t.invTitle}</h2></div>
+     <div class="grid g3 solo">${t.inv.map(p=>`
+       <div class="card price-card ${p.cls}">
+         <div class="tier">${p.tier}</div>
+         <div class="name">${p.name}</div>
+         <div class="amount">${p.eur} <small>EUR</small></div>
+         <div class="usd">${p.usd}</div>
+         <ul>${p.items.map(it=>it.startsWith('x|')?`<li class="x">${it.slice(2)}</li>`:`<li>${it}</li>`).join('')}</ul>
+       </div>`).join('')}</div>
+     <p class="fine">${t.invFine}</p>
+   </section>`,
+
+  /* 05 · conclusions: context + pillars + recommendation */
+  `<section>
+     <div class="sec-head"><span class="sec-tag">${t.concTag}</span><h2>${t.concTitle}</h2></div>
+     <p class="lead">${t.concLead}</p>
+     ${featList(t.conc)}
+     <div class="grid g3 solo">${t.imp.map(p=>`<div class="card pillar"><b class="k">${p[0]}</b><p>${p[1]}</p></div>`).join('')}</div>
+     <div class="reco">
+       <span class="tag">${t.recoTag}</span>
+       <h2>${t.recoTitle}</h2>
+       <p>${t.recoBody}</p>
+       <div class="reco-ask"><div>${t.recoAsk}</div></div>
+     </div>
+   </section>`
+  ];
+
+  const tabBar=`<div class="tabbar" role="tablist">${t.tabs.map((tb,i)=>
+    `<button class="tab${i===currentTab?' active':''}" role="tab" aria-selected="${i===currentTab}" onclick="setTab(${i})"><span class="n">0${i+1}</span>${tb}</button>`).join('')}</div>`;
+
+  document.getElementById('app').innerHTML =
+    tabBar + panels.map((p,i)=>`<div class="tab-panel${i===currentTab?' active':''}" role="tabpanel">${p}</div>`).join('') +
+    `<footer>${t.footer}</footer>`;
+
+  document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===currentLang));
+  document.documentElement.lang=currentLang;
+}
+
+function setLang(l){currentLang=l;render();}
+function setTab(i){
+  currentTab=i;
+  document.querySelectorAll('.tab').forEach((b,bi)=>{b.classList.toggle('active',bi===i);b.setAttribute('aria-selected',bi===i);});
+  document.querySelectorAll('.tab-panel').forEach((p,pi)=>p.classList.toggle('active',pi===i));
+  window.scrollTo({top:0,behavior:'auto'});
+}
+function unlock(){
+  const inp=document.getElementById('gatePass');
+  if(inp.value==='Medima2027'){
+    document.getElementById('gate').style.display='none';
+    document.body.classList.remove('locked');
+  }else{
+    inp.classList.remove('err');void inp.offsetWidth;inp.classList.add('err');
+    document.getElementById('gateErr').style.display='block';
+    inp.select();
+  }
+}
+render();
+</script>
+</body>
+</html>
