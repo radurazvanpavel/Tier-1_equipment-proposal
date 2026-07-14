@@ -114,10 +114,9 @@ ul.feat li b{color:var(--primary)}
 /* price cards */
 .price-card .tier{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .price-card .name{font-family:'Red Hat Display';font-weight:900;font-size:17px;color:var(--primary)}
-.price-card .amount{font-family:'Red Hat Mono';font-weight:700;font-size:clamp(21px,2.4vw,26px);margin:10px 0 2px;
+.price-card .amount{font-family:'Red Hat Mono';font-weight:700;font-size:clamp(21px,2.4vw,26px);margin:10px 0 12px;
   background:var(--grad-num);-webkit-background-clip:text;background-clip:text;color:transparent}
 .price-card .amount small{font-size:12px;color:var(--muted);-webkit-text-fill-color:var(--muted)}
-.price-card .usd{font-family:'Red Hat Mono';font-size:12.5px;color:var(--muted);margin-bottom:12px}
 .price-card ul{list-style:none;font-size:12.5px;color:var(--muted);display:grid;gap:5px}
 .price-card ul li{padding-left:16px;position:relative}
 .price-card ul li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
@@ -227,11 +226,12 @@ ro:{
   mrFeats:[
     '<b>ACS (AI-assisted Compressed Sensing)</b> — accelerare de până la 36x față de achiziția neaccelerată; examinări semnificativ mai scurte, fără compromis de calitate.',
     '<b>DeepRecon · EasySense · QScan · MARS+</b> — reconstrucție deep-learning, senzor respirator fără contact, scanare silențioasă, protocoale pentru implanturi metalice.',
+    '<b>Sistem imersiv de reducere a anxietății</b> — inclus în ofertă: proiector ambiental cu sistem audio integrat, monitor MR-compatibil pentru redare video, stație de comandă montată pe perete și tabletă pentru gestionarea conținutului.',
     '<b>Zero helium boil-off</b> — costuri de operare predictibile.'
   ],
   adrTitle:'Adresabilitate: pacienții pe care alții nu îi pot scana',
   adr:[
-    ['Pacienți anxioși și claustrofobi','Până la 12% din scanările RM se anulează din cauza anxietății. Tunelul de 75 cm, iluminarea „cer înstelat" și sistemul imersiv (proiector în gantry, monitor MR-compatibil, audio) — inclus în ofertă — reduc direct rata de anulare.'],
+    ['Pacienți anxioși și claustrofobi','Până la 12% din scanările RM se anulează din cauza anxietății. Tunelul de 75 cm, iluminarea „cer înstelat" și sistemul imersiv inclus în ofertă reduc direct rata de anulare.'],
     ['Pacienți bariatrici','Masă de 310 kg și spațiu real în tunel — segment practic neacoperit de sistemele convenționale de 60–70 cm.'],
     ['Pediatrie și vârstnici','Pachete dedicate nou-născuți & pediatrie, examinări off-center confortabile (umăr, șold, genunchi în poziție anatomică), protocoale rapide.'],
     ['Cazuri complexe și extindere','MARS+ pentru implanturi metalice, whole-body cu bobinele incluse, planificare de radioterapie și potențial RM intraoperator — direcții de creștere pentru un centru universitar.']
@@ -252,16 +252,16 @@ ro:{
   ],
   invTag:'Investiție', invTitle:'Valorile ofertelor (fără TVA)',
   inv:[
-    {tier:'RM 3.0T · all-in', name:'uMR Omega', eur:'1.425.000 €', usd:'1.625.000 $ · preț contractual în USD',
+    {tier:'RM 3.0T · all-in', name:'uMR Omega', eur:'1.425.000 €',
      items:['Stație de procesare completă','Tablou electric, cabină RF, chiller','Injector contrast RMN','Sistem imersiv anti-anxietate','Opțional: bobină sugari 23.000 € · stimuli fMRI 25.000 €'], cls:'tealtop'},
-    {tier:'CT 160 slice · configurație completă', name:'uCT 780 Elite', eur:'415.000 €', usd:'472.530 $ · preț contractual în USD',
+    {tier:'CT 160 slice · configurație completă', name:'uCT 780 Elite', eur:'415.000 €',
      items:['0,3 s/rot · generator 100 kW','Pachet cardiac + spectral dual-energy','Shuttle Perfusion · uAI Vision','Stație procesare, PDB, injector','2 seturi radioprotecție'], cls:'violettop'},
-    {tier:'CT 160 slice · configurație de bază', name:'uCT 780 Evolve', eur:'338.000 €', usd:'388.700 $ · preț contractual în USD',
+    {tier:'CT 160 slice · configurație de bază', name:'uCT 780 Evolve', eur:'338.000 €',
      items:['0,35 s/rot · generator 80 kW','x|Pachet cardiac: doar ca upgrade (~38.000 €)','x|Spectral: doar ca upgrade (~23.000 €)','x|Shuttle Perfusion & uAI Vision: indisponibile ulterior'], cls:''}
   ],
   invFine:'Ambele sisteme: garanție 2 ani de la punerea în funcțiune · livrare și instalare incluse · instruire la beneficiar (min. 12 zile RM / 8 zile CT) · upgrade-uri software gratuite în garanție. Valabilitatea ofertelor: 90 de zile de la 13.07.2026.',
   concTag:'Concluzii', concTitle:'De ce această configurație pentru Iași',
-  concLead:'Iașiul este primul oraș de Tier 1 în care Medima intră cu o clinică nouă. Configurația de echipamente decide, de la început, poziționarea pe piață.',
+  concLead:'Iașiul este vizat ca următorul oraș de Tier 1 pentru care se propune aprobarea unei clinici noi Medima. Configurația de echipamente decide, de la început, poziționarea pe piață.',
   conc:[
     '<b>Piață universitară, foarte competitivă.</b> Iașiul concentrează o densitate ridicată de echipamente performante, publice și private. Simpla prezență nu penetrează piața — este nevoie de capabilități pe care ceilalți nu le au.',
     '<b>Diferențiatori cu adresabilitate mare.</b> Ținta este să putem scana pacienții pe care sistemele convenționale îi refuză: bariatrici, claustrofobi, pediatrici, purtători de implanturi.',
@@ -304,11 +304,12 @@ en:{
   mrFeats:[
     '<b>ACS (AI-assisted Compressed Sensing)</b> — up to 36x acceleration versus non-accelerated acquisition; significantly shorter exams with no quality trade-off.',
     '<b>DeepRecon · EasySense · QScan · MARS+</b> — deep-learning reconstruction, contactless respiratory sensing, quiet scanning, metal-implant protocols.',
+    '<b>Immersive patient comfort solution designed to reduce anxiety</b> — included in the offer: ambient projector with integrated audio system, MRI-compatible display for video playback, wall-mounted control station and tablet for content management.',
     '<b>Zero helium boil-off</b> — predictable operating costs.'
   ],
   adrTitle:'Addressability: the patients others cannot scan',
   adr:[
-    ['Anxious and claustrophobic patients','Up to 12% of MRI scans are cancelled due to anxiety. The 75 cm bore, the "starry sky" in-bore lighting and the immersive system (in-gantry projector, MR-compatible display, audio) — included in the offer — directly reduce cancellation rates.'],
+    ['Anxious and claustrophobic patients','Up to 12% of MRI scans are cancelled due to anxiety. The 75 cm bore, the "starry sky" in-bore lighting and the immersive system included in the offer directly reduce cancellation rates.'],
     ['Bariatric patients','A 310 kg table and genuine in-bore space — a segment practically unserved by conventional 60–70 cm systems.'],
     ['Paediatrics and the elderly','Dedicated neonatal & paediatric packages, comfortable off-center exams (shoulder, hip, knee in anatomical position), fast protocols.'],
     ['Complex cases and future growth','MARS+ for metal implants, whole-body with the included coils, radiotherapy planning and potential intraoperative MRI — growth directions for a university-city centre.']
@@ -329,16 +330,16 @@ en:{
   ],
   invTag:'Investment', invTitle:'Offer values (VAT excluded)',
   inv:[
-    {tier:'3.0T MRI · all-in', name:'uMR Omega', eur:'€1,425,000', usd:'$1,625,000 · contractual price in USD',
+    {tier:'3.0T MRI · all-in', name:'uMR Omega', eur:'€1,425,000',
      items:['Full processing workstation','Electrical panel, RF cabin, chiller','MRI contrast injector','Immersive anti-anxiety system','Optional: infant coil €23,000 · fMRI stimuli €25,000'], cls:'tealtop'},
-    {tier:'160-slice CT · full configuration', name:'uCT 780 Elite', eur:'€415,000', usd:'$472,530 · contractual price in USD',
+    {tier:'160-slice CT · full configuration', name:'uCT 780 Elite', eur:'€415,000',
      items:['0.3 s/rot · 100 kW generator','Cardiac + dual-energy spectral packages','Shuttle Perfusion · uAI Vision','Processing workstation, PDB, injector','2 radioprotection sets'], cls:'violettop'},
-    {tier:'160-slice CT · base configuration', name:'uCT 780 Evolve', eur:'€338,000', usd:'$388,700 · contractual price in USD',
+    {tier:'160-slice CT · base configuration', name:'uCT 780 Evolve', eur:'€338,000',
      items:['0.35 s/rot · 80 kW generator','x|Cardiac package: upgrade only (~€38,000)','x|Spectral: upgrade only (~€23,000)','x|Shuttle Perfusion & uAI Vision: cannot be added later'], cls:''}
   ],
   invFine:'Both systems: 2-year warranty from commissioning · delivery and installation included · on-site training (min. 12 days MRI / 8 days CT) · free software upgrades during warranty. Offer validity: 90 days from 13.07.2026.',
   concTag:'Conclusions', concTitle:'Why this configuration for Iași',
-  concLead:'Iași is the first Tier 1 city where Medima opens a new clinic. The equipment configuration defines the market positioning from day one.',
+  concLead:'Iași is intended to be the next Tier 1 city approved for a new Medima clinic. The equipment configuration defines the market positioning from day one.',
   conc:[
     '<b>A university market, highly competitive.</b> Iași concentrates a high density of high-performance equipment, public and private. Mere presence does not penetrate this market — it takes capabilities the others don\u2019t have.',
     '<b>Differentiators with broad addressability.</b> The target is to scan the patients conventional systems turn away: bariatric, claustrophobic, paediatric, implant carriers.',
@@ -381,11 +382,12 @@ fr:{
   mrFeats:[
     '<b>ACS (compressed sensing assisté par IA)</b> — accélération jusqu\u2019à 36x par rapport à l\u2019acquisition non accélérée ; examens nettement plus courts, sans compromis de qualité.',
     '<b>DeepRecon · EasySense · QScan · MARS+</b> — reconstruction deep-learning, capteur respiratoire sans contact, examen silencieux, protocoles pour implants métalliques.',
+    '<b>Solution immersive de confort patient conçue pour réduire l\u2019anxiété</b> — incluse dans l\u2019offre : projecteur d\u2019ambiance avec système audio intégré, écran compatible IRM pour la lecture vidéo, station de commande murale et tablette pour la gestion du contenu.',
     '<b>Zéro évaporation d\u2019hélium</b> — coûts d\u2019exploitation prévisibles.'
   ],
   adrTitle:'Adressabilité : les patients que les autres ne peuvent pas examiner',
   adr:[
-    ['Patients anxieux et claustrophobes','Jusqu\u2019à 12 % des IRM sont annulées pour cause d\u2019anxiété. Le tunnel de 75 cm, l\u2019éclairage « ciel étoilé » et le système immersif (projecteur dans le gantry, écran compatible IRM, audio) — inclus dans l\u2019offre — réduisent directement le taux d\u2019annulation.'],
+    ['Patients anxieux et claustrophobes','Jusqu\u2019à 12 % des IRM sont annulées pour cause d\u2019anxiété. Le tunnel de 75 cm, l\u2019éclairage « ciel étoilé » et le système immersif inclus dans l\u2019offre réduisent directement le taux d\u2019annulation.'],
     ['Patients bariatriques','Table de 310 kg et espace réel dans le tunnel — un segment pratiquement non couvert par les systèmes conventionnels de 60–70 cm.'],
     ['Pédiatrie et personnes âgées','Modules dédiés nouveau-nés & pédiatrie, examens décentrés confortables (épaule, hanche, genou en position anatomique), protocoles rapides.'],
     ['Cas complexes et développement','MARS+ pour implants métalliques, corps entier avec les antennes incluses, planification de radiothérapie et potentiel d\u2019IRM peropératoire — axes de croissance pour un centre en ville universitaire.']
@@ -406,16 +408,16 @@ fr:{
   ],
   invTag:'Investissement', invTitle:'Valeurs des offres (hors TVA)',
   inv:[
-    {tier:'IRM 3,0 T · all-in', name:'uMR Omega', eur:'1 425 000 €', usd:'1 625 000 $ · prix contractuel en USD',
+    {tier:'IRM 3,0 T · all-in', name:'uMR Omega', eur:'1 425 000 €',
      items:['Station de traitement complète','Tableau électrique, cabine RF, chiller','Injecteur de contraste IRM','Système immersif anti-anxiété','En option : antenne nourrissons 23 000 € · stimuli IRMf 25 000 €'], cls:'tealtop'},
-    {tier:'Scanner 160 coupes · configuration complète', name:'uCT 780 Elite', eur:'415 000 €', usd:'472 530 $ · prix contractuel en USD',
+    {tier:'Scanner 160 coupes · configuration complète', name:'uCT 780 Elite', eur:'415 000 €',
      items:['0,3 s/rot · générateur 100 kW','Modules cardiaque + spectral double énergie','Shuttle Perfusion · uAI Vision','Station de traitement, PDB, injecteur','2 kits de radioprotection'], cls:'violettop'},
-    {tier:'Scanner 160 coupes · configuration de base', name:'uCT 780 Evolve', eur:'338 000 €', usd:'388 700 $ · prix contractuel en USD',
+    {tier:'Scanner 160 coupes · configuration de base', name:'uCT 780 Evolve', eur:'338 000 €',
      items:['0,35 s/rot · générateur 80 kW','x|Module cardiaque : uniquement en mise à niveau (~38 000 €)','x|Spectral : uniquement en mise à niveau (~23 000 €)','x|Shuttle Perfusion & uAI Vision : non ajoutables ultérieurement'], cls:''}
   ],
   invFine:'Les deux systèmes : garantie de 2 ans à compter de la mise en service · livraison et installation incluses · formation sur site (min. 12 jours IRM / 8 jours CT) · mises à jour logicielles gratuites pendant la garantie. Validité des offres : 90 jours à compter du 13.07.2026.',
   concTag:'Conclusions', concTitle:'Pourquoi cette configuration pour Iași',
-  concLead:'Iași est la première ville de premier rang où Medima ouvre une nouvelle clinique. La configuration des équipements définit d\u2019emblée le positionnement sur le marché.',
+  concLead:'Iași est envisagée comme la prochaine ville de premier rang à approuver pour une nouvelle clinique Medima. La configuration des équipements définit d\u2019emblée le positionnement sur le marché.',
   conc:[
     '<b>Un marché universitaire très concurrentiel.</b> Iași concentre une forte densité d\u2019équipements performants, publics et privés. La simple présence ne suffit pas — il faut des capacités que les autres n\u2019ont pas.',
     '<b>Des différenciateurs à forte adressabilité.</b> L\u2019objectif est de pouvoir examiner les patients que les systèmes conventionnels refusent : bariatriques, claustrophobes, pédiatriques, porteurs d\u2019implants.',
@@ -490,7 +492,7 @@ function render(){
          <div class="tier">${p.tier}</div>
          <div class="name">${p.name}</div>
          <div class="amount">${p.eur} <small>EUR</small></div>
-         <div class="usd">${p.usd}</div>
+         
          <ul>${p.items.map(it=>it.startsWith('x|')?`<li class="x">${it.slice(2)}</li>`:`<li>${it}</li>`).join('')}</ul>
        </div>`).join('')}</div>
      <p class="fine">${t.invFine}</p>
