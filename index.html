@@ -83,6 +83,7 @@ h1,h2,h3{font-family:'Red Hat Display',sans-serif;color:var(--primary)}
 
 /* ── sections ── */
 section{padding:32px 0 6px}
+section.tight{padding-top:14px}
 .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .sec-head h2{font-size:clamp(21px,3vw,29px);font-weight:900;letter-spacing:-.01em}
 .sec-head.sub{margin-top:30px}
@@ -90,6 +91,20 @@ section{padding:32px 0 6px}
 .sec-tag{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
   background:linear-gradient(120deg,var(--accent),#4FDCC9);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{color:var(--muted);margin-bottom:10px;font-size:15px}
+
+/* overview: stat strip */
+.statstrip{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border:1px solid rgba(55,0,141,.07);
+  border-radius:20px;box-shadow:var(--shadow);margin-top:14px;overflow:hidden}
+.statstrip .cell{padding:22px 14px 20px;text-align:center;border-left:1px solid var(--line);border-top:1px solid var(--line);margin:-1px 0 0 -1px}
+.statstrip b{display:block;font-family:'Red Hat Mono';font-weight:700;font-size:clamp(20px,2.1vw,26px);letter-spacing:-.02em;
+  background:var(--grad-num);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:5px}
+.statstrip span{font-size:11.5px;color:var(--muted);line-height:1.4;display:block}
+@media(max-width:980px){.statstrip{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.statstrip{grid-template-columns:repeat(2,1fr)}}
+.kicker{margin:16px auto 0;text-align:center;font-size:15px;font-weight:500;color:var(--ink)}
+.kicker::before{content:"";display:block;width:44px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--secondary));margin:0 auto 12px}
+.mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.mini i{font-style:normal;font-family:'Red Hat Display';font-weight:700;font-size:11px;color:var(--primary);background:#F3EFFB;border-radius:999px;padding:5px 11px}
 
 /* cards */
 .grid{display:grid;gap:14px;margin-top:14px}
@@ -110,6 +125,8 @@ ul.feat{list-style:none;margin-top:16px;display:grid;gap:10px}
 ul.feat li{background:#fff;border:1px solid rgba(55,0,141,.07);border-radius:14px;padding:12px 16px 12px 42px;position:relative;font-size:13.5px;box-shadow:0 6px 20px -14px rgba(55,0,141,.25)}
 ul.feat li::before{content:"";position:absolute;left:16px;top:17px;width:12px;height:12px;border-radius:4px;background:linear-gradient(135deg,var(--accent),var(--secondary))}
 ul.feat li b{color:var(--primary)}
+.note{background:#fff;border:1px solid rgba(55,0,141,.07);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:14px 18px;font-size:14px;margin-top:16px;box-shadow:var(--shadow)}
+.note b{color:var(--primary)}
 
 /* price cards */
 .price-card .tier{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
@@ -205,15 +222,26 @@ ro:{
   brandTag:'Clinica Iași · Propunere echipamente',
   tabs:['Sinteză','uMR Omega','uCT 780','Investiție','Concluzii'],
   heroEyebrow:'Medima Health · Iași · Iulie 2026',
-  heroH:'Propunere de echipamente imagistice pentru viitoarea clinică din Iași',
-  heroSub:'uMR Omega — RM 3.0T ultra-wide bore de 75 cm — și uCT 780 — CT 160 slice — configurațiile propuse pe baza ofertelor oficiale United Imaging Healthcare, primite prin Fusion Med la 13 iulie 2026.',
+  heroH:'Iași — o piață de Tier 1 care se câștigă cu diferențiatori reali',
+  heroSub:'Propunem uMR Omega — RM 3.0T ultra-wide bore de 75 cm — și uCT 780 — CT 160 slice: două sisteme complementare pentru viitoarea clinică Medima din Iași.',
   heroMeta:['FOV 60×60×50 cm — cel mai mare din industrie','Masă de 310 kg — imagistică bariatrică','Accelerare AI până la 36x pe RM','Doză CT redusă cu până la 80% (DELTA)'],
   sysA:{lbl:'uMR Omega · RM 3.0T', big:'75 cm', sub:'tunel ultra-wide — primul de 75 cm din lume la 3T'},
   sysB:{lbl:'uCT 780 · CT', big:'160', sub:'slice/rotație · 0,3 s/360° · spectral dual-energy'},
   solA_h:'uMR Omega — RM 3.0T',
-  solA:'Primul sistem RM ultra-wide bore de 75 cm din lume, cu cel mai mare câmp de vizualizare din industrie (60×60×50 cm) și accelerare AI (ACS, DeepRecon). Configurație all-in: 72 canale, 11 bobine, sistem imersiv anti-anxietate inclus.',
+  solA:'Primul sistem RM 3T ultra-wide bore de 75 cm din lume — adresabilitate maximă, în configurație all-in.',
+  solA_c:['FOV 60×60×50 cm','masă 310 kg','ACS până la 36x','sistem imersiv inclus'],
   solB_h:'uCT 780 — CT 160 slice',
-  solB:'CT premium cu detector Z de 0,5 mm, rotație 0,3 s și imagistică spectrală dual-energy. Cardiologie completă, perfuzie și aplicații AI de poziționare și reducere a dozei. Punctaj CAS maxim: 209 puncte.',
+  solB:'CT de 160 slice cu imagistică spectrală dual-energy și cardiologie completă.',
+  solB_c:['0,3 s/rotație','dual-energy','DELTA: −80% doză','CAS: 209 p — maxim'],
+  mkTag:'Piața Iași',
+  mkStats:[
+    ['271.692','municipiul Iași · al 3-lea oraș din România'],
+    ['500.000+','zona metropolitană extinsă'],
+    ['1 mil.+','județul Iași'],
+    ['23','sisteme RM instalate · 16 private + 7 publice'],
+    ['30','sisteme CT instalate · 14 private + 16 publice']
+  ],
+  mkNote:'Una dintre cele mai dense piețe de imagistică din România — intrarea cere capabilități pe care parcul instalat nu le oferă.',
   mrTag:'uMR Omega · 3.0T', mrTitle:'Parametrii care contează clinic',
   mrStats:[
     ['75 cm','diametrul tunelului — primul ultra-wide bore de 75 cm din lume la 3T'],
@@ -283,15 +311,26 @@ en:{
   brandTag:'Iași Clinic · Equipment proposal',
   tabs:['Overview','uMR Omega','uCT 780','Investment','Conclusions'],
   heroEyebrow:'Medima Health · Iași · July 2026',
-  heroH:'Imaging equipment proposal for the future Iași clinic',
-  heroSub:'uMR Omega — a 75 cm ultra-wide-bore 3.0T MRI — and uCT 780 — a 160-slice CT — the configurations proposed on the basis of the official United Imaging Healthcare offers received via Fusion Med on 13 July 2026.',
+  heroH:'Iași — a Tier 1 market won through real differentiators',
+  heroSub:'We propose the uMR Omega — a 75 cm ultra-wide-bore 3.0T MRI — and the uCT 780 — a 160-slice CT: two complementary systems for the future Medima clinic in Iași.',
   heroMeta:['60×60×50 cm FOV — the industry\u2019s largest','310 kg table — bariatric imaging','AI acceleration up to 36x on the MRI','CT dose reduced by up to 80% (DELTA)'],
   sysA:{lbl:'uMR Omega · 3.0T MRI', big:'75 cm', sub:'ultra-wide bore — the world\u2019s first 75 cm at 3T'},
   sysB:{lbl:'uCT 780 · CT', big:'160', sub:'slices/rotation · 0.3 s/360° · dual-energy spectral'},
   solA_h:'uMR Omega — 3.0T MRI',
-  solA:'The world\u2019s first 75 cm ultra-wide-bore MRI, with the industry\u2019s largest field of view (60×60×50 cm) and AI acceleration (ACS, DeepRecon). All-in configuration: 72 channels, 11 coils, immersive anti-anxiety system included.',
+  solA:'The world\u2019s first 75 cm ultra-wide-bore 3T MRI — maximum addressability, in an all-in configuration.',
+  solA_c:['60×60×50 cm FOV','310 kg table','ACS up to 36x','immersive system included'],
   solB_h:'uCT 780 — 160-slice CT',
-  solB:'Premium CT with a 0.5 mm Z-Detector, 0.3 s rotation and dual-energy spectral imaging. Full cardiac workflow, perfusion, plus AI positioning and dose-reduction applications. Maximum CAS score (CAS — the Romanian Health Insurance House reimbursement grid): 209 points.',
+  solB:'A 160-slice CT with dual-energy spectral imaging and a full cardiac workflow.',
+  solB_c:['0.3 s/rotation','dual-energy','DELTA: −80% dose','CAS: 209 p — maximum'],
+  mkTag:'The Iași market',
+  mkStats:[
+    ['271,692','city of Iași · 3rd-largest in Romania'],
+    ['500,000+','extended metropolitan area'],
+    ['1 m+','Iași county'],
+    ['23','installed MRI systems · 16 private + 7 public'],
+    ['30','installed CT systems · 14 private + 16 public']
+  ],
+  mkNote:'One of Romania\u2019s densest imaging markets — entering it takes capabilities the installed base does not offer.',
   mrTag:'uMR Omega · 3.0T', mrTitle:'The parameters that matter clinically',
   mrStats:[
     ['75 cm','bore diameter — the world\u2019s first 75 cm ultra-wide bore at 3T'],
@@ -361,15 +400,26 @@ fr:{
   brandTag:'Clinique de Iași · Proposition d\u2019équipements',
   tabs:['Synthèse','uMR Omega','uCT 780','Investissement','Conclusions'],
   heroEyebrow:'Medima Health · Iași · Juillet 2026',
-  heroH:'Proposition d\u2019équipements d\u2019imagerie pour la future clinique de Iași',
-  heroSub:'uMR Omega — IRM 3,0 T à tunnel ultra-large de 75 cm — et uCT 780 — scanner 160 coupes — les configurations proposées sur la base des offres officielles United Imaging Healthcare, reçues via Fusion Med le 13 juillet 2026.',
+  heroH:'Iași — un marché de premier rang qui se gagne par de vrais différenciateurs',
+  heroSub:'Nous proposons l\u2019uMR Omega — IRM 3,0 T à tunnel ultra-large de 75 cm — et le uCT 780 — scanner 160 coupes : deux systèmes complémentaires pour la future clinique Medima de Iași.',
   heroMeta:['FOV 60×60×50 cm — le plus grand du secteur','Table de 310 kg — imagerie bariatrique','Accélération IA jusqu\u2019à 36x sur l\u2019IRM','Dose scanner réduite jusqu\u2019à 80 % (DELTA)'],
   sysA:{lbl:'uMR Omega · IRM 3,0 T', big:'75 cm', sub:'tunnel ultra-large — le premier de 75 cm au monde en 3T'},
   sysB:{lbl:'uCT 780 · scanner', big:'160', sub:'coupes/rotation · 0,3 s/360° · spectral double énergie'},
   solA_h:'uMR Omega — IRM 3,0 T',
-  solA:'La première IRM au monde à tunnel ultra-large de 75 cm, avec le plus grand champ de vue du secteur (60×60×50 cm) et l\u2019accélération par IA (ACS, DeepRecon). Configuration all-in : 72 canaux, 11 antennes, système immersif anti-anxiété inclus.',
+  solA:'La première IRM 3T à tunnel ultra-large de 75 cm au monde — adressabilité maximale, en configuration all-in.',
+  solA_c:['FOV 60×60×50 cm','table 310 kg','ACS jusqu\u2019à 36x','système immersif inclus'],
   solB_h:'uCT 780 — scanner 160 coupes',
-  solB:'Scanner premium avec détecteur Z de 0,5 mm, rotation de 0,3 s et imagerie spectrale double énergie. Flux cardiaque complet, perfusion, applications IA de positionnement et de réduction de dose. Score CAS maximal (CAS — Casa de Asigurări de Sănătate, la caisse roumaine d\u2019assurance santé) : 209 points.',
+  solB:'Scanner 160 coupes avec imagerie spectrale double énergie et flux cardiaque complet.',
+  solB_c:['0,3 s/rotation','double énergie','DELTA : −80 % de dose','CAS : 209 p — maximum'],
+  mkTag:'Le marché de Iași',
+  mkStats:[
+    ['271 692','ville de Iași · 3ᵉ ville de Roumanie'],
+    ['500 000+','aire métropolitaine étendue'],
+    ['1 M+','județ de Iași'],
+    ['23','systèmes IRM installés · 16 privés + 7 publics'],
+    ['30','scanners CT installés · 14 privés + 16 publics']
+  ],
+  mkNote:'L\u2019un des marchés d\u2019imagerie les plus denses de Roumanie — y entrer exige des capacités que le parc installé n\u2019offre pas.',
   mrTag:'uMR Omega · 3,0 T', mrTitle:'Les paramètres qui comptent en clinique',
   mrStats:[
     ['75 cm','diamètre du tunnel — première IRM 3T ultra-large de 75 cm au monde'],
@@ -456,16 +506,20 @@ function render(){
        <span class="eyebrow">${t.heroEyebrow}</span>
        <h1>${t.heroH}</h1>
        <p class="sub">${t.heroSub}</p>
-       <div class="meta">${t.heroMeta.map(m=>`<span>${m}</span>`).join('')}</div>
      </div>
      <div class="hero-panel">
        <div class="sys mr"><div class="lbl">${t.sysA.lbl}</div><b>${t.sysA.big}</b><span>${t.sysA.sub}</span></div>
        <div class="sys ct"><div class="lbl">${t.sysB.lbl}</div><b>${t.sysB.big}</b><span>${t.sysB.sub}</span></div>
      </div>
    </div></div>
-   <section><div class="grid g2">
-     <div class="card tealtop"><h4>${t.solA_h}</h4><p>${t.solA}</p></div>
-     <div class="card violettop"><h4>${t.solB_h}</h4><p>${t.solB}</p></div>
+   <section>
+     <div class="sec-head"><span class="sec-tag">${t.mkTag}</span></div>
+     <div class="statstrip">${t.mkStats.map(s=>`<div class="cell"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
+     <p class="kicker">${t.mkNote}</p>
+   </section>
+   <section class="tight"><div class="grid g2">
+     <div class="card tealtop"><h4>${t.solA_h}</h4><p>${t.solA}</p><div class="mini">${t.solA_c.map(c=>`<i>${c}</i>`).join('')}</div></div>
+     <div class="card violettop"><h4>${t.solB_h}</h4><p>${t.solB}</p><div class="mini">${t.solB_c.map(c=>`<i>${c}</i>`).join('')}</div></div>
    </div></section>`,
 
   /* 02 · uMR Omega (specs + addressability) */
