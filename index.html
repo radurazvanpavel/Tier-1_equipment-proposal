@@ -131,9 +131,10 @@ ul.feat li b{color:var(--primary)}
 /* price cards */
 .price-card .tier{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .price-card .name{font-family:'Red Hat Display';font-weight:900;font-size:17px;color:var(--primary)}
-.price-card .amount{font-family:'Red Hat Mono';font-weight:700;font-size:clamp(21px,2.4vw,26px);margin:10px 0 12px;
+.vat{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 14px}
+.vat b{display:block;font-family:'Red Hat Mono';font-weight:700;font-size:clamp(17px,1.9vw,22px);letter-spacing:-.02em;
   background:var(--grad-num);-webkit-background-clip:text;background-clip:text;color:transparent}
-.price-card .amount small{font-size:12px;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+.vat span{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 .price-card ul{list-style:none;font-size:12.5px;color:var(--muted);display:grid;gap:5px}
 .price-card ul li{padding-left:16px;position:relative}
 .price-card ul li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
@@ -278,16 +279,16 @@ ro:{
     '<b>Imagistică spectrală dual-energy</b> (80/140 kVp) și Shuttle Perfusion — analiza compoziției țesuturilor și perfuzie cerebrală/corporală.',
     '<b>uAI Vision:</b> cameră 3D și poziționare automată AI — examinări standardizate, doză optimizată, flux mai rapid.'
   ],
-  invTag:'Investiție', invTitle:'Valorile ofertelor (fără TVA)',
+  invTag:'Investiție', invTitle:'Valorile ofertelor', vatNet:'fără TVA', vatGross:'cu TVA (21%)',
   inv:[
-    {tier:'RM 3.0T · all-in', name:'uMR Omega', eur:'1.425.000 €',
-     items:['Stație de procesare completă','Tablou electric, cabină RF, chiller','Injector contrast RMN','Sistem imersiv anti-anxietate','Opțional: bobină sugari 23.000 € · stimuli fMRI 25.000 €'], cls:'tealtop'},
-    {tier:'CT 160 slice · configurație completă', name:'uCT 780 Elite', eur:'415.000 €',
+    {tier:'RM 3.0T · all-in', name:'uMR Omega', net:'1.425.000 €', gross:'1.724.250 €',
+     items:['Stație de procesare completă','Tablou electric, cabină RF, chiller','Injector contrast RMN','Sistem imersiv anti-anxietate','Opțional: bobină sugari 23.000 € (27.830 € cu TVA) · stimuli fMRI 25.000 € (30.250 € cu TVA)'], cls:'tealtop'},
+    {tier:'CT 160 slice · configurație completă', name:'uCT 780 Elite', net:'415.000 €', gross:'502.150 €',
      items:['0,3 s/rot · generator 100 kW','Pachet cardiac + spectral dual-energy','Shuttle Perfusion · uAI Vision','Stație procesare, PDB, injector','2 seturi radioprotecție'], cls:'violettop'},
-    {tier:'CT 160 slice · configurație de bază', name:'uCT 780 Evolve', eur:'338.000 €',
-     items:['0,35 s/rot · generator 80 kW','x|Pachet cardiac: doar ca upgrade (~38.000 €)','x|Spectral: doar ca upgrade (~23.000 €)','x|Shuttle Perfusion & uAI Vision: indisponibile ulterior'], cls:''}
+    {tier:'CT 160 slice · configurație de bază', name:'uCT 780 Evolve', net:'338.000 €', gross:'408.980 €',
+     items:['0,35 s/rot · generator 80 kW','x|Pachet cardiac: doar ca upgrade (~38.000 € / ~45.980 € cu TVA)','x|Spectral: doar ca upgrade (~23.000 € / ~27.830 € cu TVA)','x|Shuttle Perfusion & uAI Vision: indisponibile ulterior'], cls:''}
   ],
-  invFine:'Ambele sisteme: garanție 2 ani de la punerea în funcțiune · livrare și instalare incluse · instruire la beneficiar (min. 12 zile RM / 8 zile CT) · upgrade-uri software gratuite în garanție. Valabilitatea ofertelor: 90 de zile de la 13.07.2026.',
+  invFine:'Ambele sisteme: garanție 2 ani de la punerea în funcțiune · livrare și instalare incluse · instruire la beneficiar (min. 12 zile RM / 8 zile CT) · upgrade-uri software gratuite în garanție. Valabilitatea ofertelor: 90 de zile de la 13.07.2026. Valorile cu TVA sunt calculate la cota de 21%.',
   concTag:'Concluzii', concTitle:'De ce această configurație pentru Iași',
   concLead:'Iașiul este vizat ca următorul oraș de Tier 1 pentru care se propune aprobarea unei clinici noi Medima. Configurația de echipamente decide, de la început, poziționarea pe piață.',
   conc:[
@@ -367,16 +368,16 @@ en:{
     '<b>Dual-energy spectral imaging</b> (80/140 kVp) and Shuttle Perfusion — tissue composition analysis and brain/body perfusion.',
     '<b>uAI Vision:</b> 3D camera and automatic AI positioning — standardised exams, optimised dose, faster workflow.'
   ],
-  invTag:'Investment', invTitle:'Offer values (VAT excluded)',
+  invTag:'Investment', invTitle:'Offer values', vatNet:'excl. VAT', vatGross:'incl. VAT (21%)',
   inv:[
-    {tier:'3.0T MRI · all-in', name:'uMR Omega', eur:'€1,425,000',
-     items:['Full processing workstation','Electrical panel, RF cabin, chiller','MRI contrast injector','Immersive anti-anxiety system','Optional: infant coil €23,000 · fMRI stimuli €25,000'], cls:'tealtop'},
-    {tier:'160-slice CT · full configuration', name:'uCT 780 Elite', eur:'€415,000',
+    {tier:'3.0T MRI · all-in', name:'uMR Omega', net:'€1,425,000', gross:'€1,724,250',
+     items:['Full processing workstation','Electrical panel, RF cabin, chiller','MRI contrast injector','Immersive anti-anxiety system','Optional: infant coil €23,000 (€27,830 incl. VAT) · fMRI stimuli €25,000 (€30,250 incl. VAT)'], cls:'tealtop'},
+    {tier:'160-slice CT · full configuration', name:'uCT 780 Elite', net:'€415,000', gross:'€502,150',
      items:['0.3 s/rot · 100 kW generator','Cardiac + dual-energy spectral packages','Shuttle Perfusion · uAI Vision','Processing workstation, PDB, injector','2 radioprotection sets'], cls:'violettop'},
-    {tier:'160-slice CT · base configuration', name:'uCT 780 Evolve', eur:'€338,000',
-     items:['0.35 s/rot · 80 kW generator','x|Cardiac package: upgrade only (~€38,000)','x|Spectral: upgrade only (~€23,000)','x|Shuttle Perfusion & uAI Vision: cannot be added later'], cls:''}
+    {tier:'160-slice CT · base configuration', name:'uCT 780 Evolve', net:'€338,000', gross:'€408,980',
+     items:['0.35 s/rot · 80 kW generator','x|Cardiac package: upgrade only (~€38,000 / ~€45,980 incl. VAT)','x|Spectral: upgrade only (~€23,000 / ~€27,830 incl. VAT)','x|Shuttle Perfusion & uAI Vision: cannot be added later'], cls:''}
   ],
-  invFine:'Both systems: 2-year warranty from commissioning · delivery and installation included · on-site training (min. 12 days MRI / 8 days CT) · free software upgrades during warranty. Offer validity: 90 days from 13.07.2026.',
+  invFine:'Both systems: 2-year warranty from commissioning · delivery and installation included · on-site training (min. 12 days MRI / 8 days CT) · free software upgrades during warranty. Offer validity: 90 days from 13.07.2026. VAT-inclusive values are calculated at the 21% rate.',
   concTag:'Conclusions', concTitle:'Why this configuration for Iași',
   concLead:'Iași is intended to be the next Tier 1 city approved for a new Medima clinic. The equipment configuration defines the market positioning from day one.',
   conc:[
@@ -456,16 +457,16 @@ fr:{
     '<b>Imagerie spectrale double énergie</b> (80/140 kVp) et Shuttle Perfusion — analyse de composition des tissus et perfusion cérébrale/corporelle.',
     '<b>uAI Vision :</b> caméra 3D et positionnement automatique par IA — examens standardisés, dose optimisée, flux plus rapide.'
   ],
-  invTag:'Investissement', invTitle:'Valeurs des offres (hors TVA)',
+  invTag:'Investissement', invTitle:'Valeurs des offres', vatNet:'HT', vatGross:'TTC (TVA 21 %)',
   inv:[
-    {tier:'IRM 3,0 T · all-in', name:'uMR Omega', eur:'1 425 000 €',
-     items:['Station de traitement complète','Tableau électrique, cabine RF, chiller','Injecteur de contraste IRM','Système immersif anti-anxiété','En option : antenne nourrissons 23 000 € · stimuli IRMf 25 000 €'], cls:'tealtop'},
-    {tier:'Scanner 160 coupes · configuration complète', name:'uCT 780 Elite', eur:'415 000 €',
+    {tier:'IRM 3,0 T · all-in', name:'uMR Omega', net:'1 425 000 €', gross:'1 724 250 €',
+     items:['Station de traitement complète','Tableau électrique, cabine RF, chiller','Injecteur de contraste IRM','Système immersif anti-anxiété','En option : antenne nourrissons 23 000 € (27 830 € TTC) · stimuli IRMf 25 000 € (30 250 € TTC)'], cls:'tealtop'},
+    {tier:'Scanner 160 coupes · configuration complète', name:'uCT 780 Elite', net:'415 000 €', gross:'502 150 €',
      items:['0,3 s/rot · générateur 100 kW','Modules cardiaque + spectral double énergie','Shuttle Perfusion · uAI Vision','Station de traitement, PDB, injecteur','2 kits de radioprotection'], cls:'violettop'},
-    {tier:'Scanner 160 coupes · configuration de base', name:'uCT 780 Evolve', eur:'338 000 €',
-     items:['0,35 s/rot · générateur 80 kW','x|Module cardiaque : uniquement en mise à niveau (~38 000 €)','x|Spectral : uniquement en mise à niveau (~23 000 €)','x|Shuttle Perfusion & uAI Vision : non ajoutables ultérieurement'], cls:''}
+    {tier:'Scanner 160 coupes · configuration de base', name:'uCT 780 Evolve', net:'338 000 €', gross:'408 980 €',
+     items:['0,35 s/rot · générateur 80 kW','x|Module cardiaque : uniquement en mise à niveau (~38 000 € / ~45 980 € TTC)','x|Spectral : uniquement en mise à niveau (~23 000 € / ~27 830 € TTC)','x|Shuttle Perfusion & uAI Vision : non ajoutables ultérieurement'], cls:''}
   ],
-  invFine:'Les deux systèmes : garantie de 2 ans à compter de la mise en service · livraison et installation incluses · formation sur site (min. 12 jours IRM / 8 jours CT) · mises à jour logicielles gratuites pendant la garantie. Validité des offres : 90 jours à compter du 13.07.2026.',
+  invFine:'Les deux systèmes : garantie de 2 ans à compter de la mise en service · livraison et installation incluses · formation sur site (min. 12 jours IRM / 8 jours CT) · mises à jour logicielles gratuites pendant la garantie. Validité des offres : 90 jours à compter du 13.07.2026. Les valeurs TTC sont calculées au taux de TVA de 21 %.',
   concTag:'Conclusions', concTitle:'Pourquoi cette configuration pour Iași',
   concLead:'Iași est envisagée comme la prochaine ville de premier rang à approuver pour une nouvelle clinique Medima. La configuration des équipements définit d\u2019emblée le positionnement sur le marché.',
   conc:[
@@ -545,7 +546,10 @@ function render(){
        <div class="card price-card ${p.cls}">
          <div class="tier">${p.tier}</div>
          <div class="name">${p.name}</div>
-         <div class="amount">${p.eur} <small>EUR</small></div>
+         <div class="vat">
+           <div><b>${p.net}</b><span>${t.vatNet}</span></div>
+           <div><b>${p.gross}</b><span>${t.vatGross}</span></div>
+         </div>
          
          <ul>${p.items.map(it=>it.startsWith('x|')?`<li class="x">${it.slice(2)}</li>`:`<li>${it}</li>`).join('')}</ul>
        </div>`).join('')}</div>
